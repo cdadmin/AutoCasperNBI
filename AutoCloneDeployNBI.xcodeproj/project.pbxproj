@@ -56,6 +56,7 @@
 		7CDD2BC019EC7BAA008D370F /* YoYo-Clock.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7CDD2BBB19EC7BAA008D370F /* YoYo-Clock.icns */; };
 		7CDD2BC119EC7BAA008D370F /* YoYo-AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7CDD2BBC19EC7BAA008D370F /* YoYo-AppIcon.icns */; };
 		7CEDD051195B8243009DA982 /* Installer.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7CEDD050195B8243009DA982 /* Installer.icns */; };
+		84AECF391C9F41CD00CEDCA0 /* Clonedeploy.icns in Resources */ = {isa = PBXBuildFile; fileRef = 84AECF381C9F41CD00CEDCA0 /* Clonedeploy.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,16 +77,16 @@
 		7C07F19219F10B5E00314193 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		7C07F19619F10C8B00314193 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		7C0E1A271A700D8E0008ED3C /* JSS.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = JSS.icns; sourceTree = "<group>"; };
-		7C13057B193FC0B60060F343 /* AutoCasperNBI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoCasperNBI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C13057B193FC0B60060F343 /* AutoCloneDeployNBI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoCloneDeployNBI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C13057E193FC0B60060F343 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7C130580193FC0B60060F343 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 		7C130583193FC0B60060F343 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		7C130584193FC0B60060F343 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7C130585193FC0B60060F343 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		7C130588193FC0B60060F343 /* AutoCasperNBI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutoCasperNBI-Info.plist"; sourceTree = "<group>"; };
+		7C130588193FC0B60060F343 /* AutoCloneDeployNBI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutoCloneDeployNBI-Info.plist"; sourceTree = "<group>"; };
 		7C13058A193FC0B60060F343 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7C13058C193FC0B60060F343 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7C13058E193FC0B60060F343 /* AutoCasperNBI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AutoCasperNBI-Prefix.pch"; sourceTree = "<group>"; };
+		7C13058E193FC0B60060F343 /* AutoCloneDeployNBI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AutoCloneDeployNBI-Prefix.pch"; sourceTree = "<group>"; };
 		7C130590193FC0B60060F343 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		7C130592193FC0B60060F343 /* AutoCasperNBIAppDelegate.applescript */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.applescript; path = AutoCasperNBIAppDelegate.applescript; sourceTree = "<group>"; };
 		7C130597193FC0B60060F343 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -126,6 +127,7 @@
 		7CDD2BBB19EC7BAA008D370F /* YoYo-Clock.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "YoYo-Clock.icns"; sourceTree = "<group>"; };
 		7CDD2BBC19EC7BAA008D370F /* YoYo-AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "YoYo-AppIcon.icns"; sourceTree = "<group>"; };
 		7CEDD050195B8243009DA982 /* Installer.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Installer.icns; sourceTree = "<group>"; };
+		84AECF381C9F41CD00CEDCA0 /* Clonedeploy.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Clonedeploy.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +147,7 @@
 		7C130572193FC0B60060F343 = {
 			isa = PBXGroup;
 			children = (
-				7C130586193FC0B60060F343 /* AutoCasperNBI */,
+				7C130586193FC0B60060F343 /* AutoCloneDeployNBI */,
 				7C13057D193FC0B60060F343 /* Frameworks */,
 				7C13057C193FC0B60060F343 /* Products */,
 			);
@@ -154,7 +156,7 @@
 		7C13057C193FC0B60060F343 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7C13057B193FC0B60060F343 /* AutoCasperNBI.app */,
+				7C13057B193FC0B60060F343 /* AutoCloneDeployNBI.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,7 +182,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		7C130586193FC0B60060F343 /* AutoCasperNBI */ = {
+		7C130586193FC0B60060F343 /* AutoCloneDeployNBI */ = {
 			isa = PBXGroup;
 			children = (
 				7C3759481BC7027900CBB857 /* 10.11NBImageInfo */,
@@ -199,6 +201,7 @@
 				7C130597193FC0B60060F343 /* Images.xcassets */,
 				7C130587193FC0B60060F343 /* Supporting Files */,
 			);
+			name = AutoCloneDeployNBI;
 			path = AutoCasperNBI;
 			sourceTree = "<group>";
 		};
@@ -207,10 +210,10 @@
 			children = (
 				7C27FA27198C3D9500BD5A07 /* complete.aif */,
 				7C1305A0193FC0F70060F343 /* Images */,
-				7C130588193FC0B60060F343 /* AutoCasperNBI-Info.plist */,
+				7C130588193FC0B60060F343 /* AutoCloneDeployNBI-Info.plist */,
 				7C130589193FC0B60060F343 /* InfoPlist.strings */,
 				7C13058C193FC0B60060F343 /* main.m */,
-				7C13058E193FC0B60060F343 /* AutoCasperNBI-Prefix.pch */,
+				7C13058E193FC0B60060F343 /* AutoCloneDeployNBI-Prefix.pch */,
 				7C13058F193FC0B60060F343 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -219,6 +222,7 @@
 		7C1305A0193FC0F70060F343 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				84AECF381C9F41CD00CEDCA0 /* Clonedeploy.icns */,
 				7C0E1A271A700D8E0008ED3C /* JSS.icns */,
 				7C83B57519A3B41700E9572E /* CDiskImage.icns */,
 				7C83B57319A3B39A00E9572E /* diskcopy.icns */,
@@ -253,9 +257,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7C13057A193FC0B60060F343 /* AutoCasperNBI */ = {
+		7C13057A193FC0B60060F343 /* AutoCloneDeployNBI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7C13059B193FC0B60060F343 /* Build configuration list for PBXNativeTarget "AutoCasperNBI" */;
+			buildConfigurationList = 7C13059B193FC0B60060F343 /* Build configuration list for PBXNativeTarget "AutoCloneDeployNBI" */;
 			buildPhases = (
 				7C130577193FC0B60060F343 /* Sources */,
 				7C130578193FC0B60060F343 /* Frameworks */,
@@ -267,9 +271,9 @@
 			);
 			dependencies = (
 			);
-			name = AutoCasperNBI;
+			name = AutoCloneDeployNBI;
 			productName = AutoCasperNBI;
-			productReference = 7C13057B193FC0B60060F343 /* AutoCasperNBI.app */;
+			productReference = 7C13057B193FC0B60060F343 /* AutoCloneDeployNBI.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -281,7 +285,7 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = macmule;
 			};
-			buildConfigurationList = 7C130576193FC0B60060F343 /* Build configuration list for PBXProject "AutoCasperNBI" */;
+			buildConfigurationList = 7C130576193FC0B60060F343 /* Build configuration list for PBXProject "AutoCloneDeployNBI" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -294,7 +298,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7C13057A193FC0B60060F343 /* AutoCasperNBI */,
+				7C13057A193FC0B60060F343 /* AutoCloneDeployNBI */,
 			);
 		};
 /* End PBXProject section */
@@ -325,6 +329,7 @@
 				7C0E1A291A700D8E0008ED3C /* JSS.icns in Resources */,
 				7CC26BDC19DA1DF8002A093B /* rc.netboot in Resources */,
 				7C19700A198058F00092062D /* Scripts.icns in Resources */,
+				84AECF391C9F41CD00CEDCA0 /* Clonedeploy.icns in Resources */,
 				7C9BC9E719EC7EE800C4FDDD /* YoYo-package.icns in Resources */,
 				7CC636E6197D444E008473CE /* NBImageInfo.plist in Resources */,
 				7CDD2BC019EC7BAA008D370F /* YoYo-Clock.icns in Resources */,
@@ -480,10 +485,10 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AutoCasperNBI/AutoCasperNBI-Prefix.pch";
-				INFOPLIST_FILE = "AutoCasperNBI/AutoCasperNBI-Info.plist";
+				GCC_PREFIX_HEADER = "AutoCasperNBI/AutoCloneDeployNBI-Prefix.pch";
+				INFOPLIST_FILE = "AutoCasperNBI/AutoCloneDeployNBI-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AutoCloneDeployNBI;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -498,10 +503,10 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "AutoCasperNBI/AutoCasperNBI-Prefix.pch";
-				INFOPLIST_FILE = "AutoCasperNBI/AutoCasperNBI-Info.plist";
+				GCC_PREFIX_HEADER = "AutoCasperNBI/AutoCloneDeployNBI-Prefix.pch";
+				INFOPLIST_FILE = "AutoCasperNBI/AutoCloneDeployNBI-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AutoCloneDeployNBI;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -509,7 +514,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7C130576193FC0B60060F343 /* Build configuration list for PBXProject "AutoCasperNBI" */ = {
+		7C130576193FC0B60060F343 /* Build configuration list for PBXProject "AutoCloneDeployNBI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C130599193FC0B60060F343 /* Debug */,
@@ -518,7 +523,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7C13059B193FC0B60060F343 /* Build configuration list for PBXNativeTarget "AutoCasperNBI" */ = {
+		7C13059B193FC0B60060F343 /* Build configuration list for PBXNativeTarget "AutoCloneDeployNBI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7C13059C193FC0B60060F343 /* Debug */,

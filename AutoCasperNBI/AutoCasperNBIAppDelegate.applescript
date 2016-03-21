@@ -123,7 +123,6 @@ script AutoCasperNBIAppDelegate
     property exclamationRedOSDMG : false
     property cogOSDMG : false
     property cogOSDMGAnimate : true
-    property selectedAppCheckPass : false
     property exclamationRedSelectedApp : false
     property warningSelectedApp : false
     property cogSelectedApp : false
@@ -137,7 +136,7 @@ script AutoCasperNBIAppDelegate
     property minorJSSAndCasperImagingVersionDiff : false
     property buildButtonDisabled : true
     property optionsButtonDisabled : true
-    property disableOptionsAndBuild : true
+    property disableOptionsAndBuild : false
     property netBootImageIndexLoadBalanced : false
     property optionWindowEnabled : true
     property netBootImageReduceEnabled : false
@@ -152,7 +151,7 @@ script AutoCasperNBIAppDelegate
     property buildProcessProgressBarIndeterminate : false
     property buildProcessProgressBarAniminate : false
     property netBootCreationSuccessful : false
-    property netBootServeOverNFS : true
+    property netBootServeOverNFS : false
     property customDesktopImageEnabled : false
     property installRCNetBootSelected : true
     property timeServerOptionsEnabled : false
@@ -163,7 +162,7 @@ script AutoCasperNBIAppDelegate
     property buildButtonPreCheckPassed : true
     property closeButtonPreCheckPassed : true
     property simpleFinderEnabled : false
-    property servedFromNetSUS : false
+    property servedFromNetSUS : true
     property logNewLine : true
     property isAdminUser : false
     property pkgsMissing : false
@@ -350,7 +349,6 @@ script AutoCasperNBIAppDelegate
 
     -- Reset SelectedApp Icons, cog & further options
     on doResetSelectedAppIcons_(sender)
-        set my selectedAppCheckPass to false
         set my cogSelectedApp to false
     end doResetSelectedAppIcons_
     
@@ -563,81 +561,12 @@ script AutoCasperNBIAppDelegate
         end if
     end doOSDMG_
 
-    -- Display a window for the user to select Casper Imaging.app.
-    on selectedApp_(sender)
-        -- Create a window prompting user to select an app
-        try
-            choose file of type {"com.apple.application-bundle"} with prompt "Select Casper Imaging.app:" default location (path to applications folder)
-            -- Get path of the selected app.
-            set my selectedAppPath to POSIX path of result
-            -- Log path of the selected app
-            set logMe to "Selected App Path: " & selectedAppPath
-            logToFile_(me)
-            -- Reset Selected App Icons & cog
-            doResetSelectedAppIcons_(me)
-            -- Run handler
-            selectedAppCheck_(me)
-        end try
-    end selectedApp_
 
-    -- Check selected app is Casper Imaging & return version
-    on selectedAppCheck_(sender)
-        -- Set label to Casper Imaging version
-        set my selectedAppTextField to "Examining..."
-        -- Display the cog to reinforce we're busy
-        set my cogSelectedApp to true
-        -- Delay needed to update label
-        delay 0.1
-        -- Get Bundle Name of selected app
-        set selectedAppBundleName to do shell script "/usr/bin/defaults read " & quoted form of selectedAppPath & "/Contents/Info.plist CFBundleName"
-        --Log Action
-        set logMe to "Bundle Name: " & selectedAppBundleName
-        logToFile_(me)
-        -- If Bundle Name is Casper Imaging, proceed to get version
-        if selectedAppBundleName is equal to "Casper Imaging" then
-            try
-                -- If Casper Imaging, return version
-                set selectedCasperImagingAppVersion to do shell script "/usr/bin/defaults read " & quoted form of selectedAppPath & "/Contents/Info.plist CFBundleGetInfoString"
-                --Log Action
-                set logMe to "Casper Imaging Version: " & selectedCasperImagingAppVersion
-                logToFile_(me)
-                -- Set label to Casper Imaging version
-                set my selectedAppTextField to "Casper Imaging " & selectedCasperImagingAppVersion
-                -- Reset Selected App Icons
-                doResetSelectedAppIcons_(me)
-                -- Display green tick
-                set my selectedAppCheckPass to true
-                -- Compare JSS & Casper Imaging Versions
-                checkJSSURL_(me)
-            -- Error if cannot get the version number
-            on error
-                -- Reset Selected App Icons
-                doResetSelectedAppIcons_(me)
-                -- Display Error if cannot get version number
-                set my selectedAppTextField to "Cannot Get Version"
-                -- Disable options and build
-                set my disableOptionsAndBuild to true
-            end try
-        -- If selected app is not Casper Imaging.
-        else
-            --Log Action
-            set logMe to "Select Casper Imaging.app"
-            logToFile_(me)
-            -- Reset Selected App Icons
-            doResetSelectedAppIcons_(me)
-            -- Display message that we have selected Casper Imaging
-            set my selectedAppTextField to "Select Casper Imaging.app"
-            -- Disable options and build
-            set my disableOptionsAndBuild to true
-        end if
-        -- See if pre-reqs have been met
-        checkIfReadyToProceed_(me)
-    end selectedAppCheck_
-    
     -- Make sure OS & Imaging.app is specified before proceeding, once checked enable JSS options, as well as Build & Option buttons
     on checkIfReadyToProceed_(sender)
         -- Check to see if we have ticks or minor warning before we proceed
-        if selectedAppCheckPass and selectedOSDMGCheckPass is equal to true
+        
+        if selectedOSDMGCheckPass is equal to true
             -- Enable Options & Build
             set my disableOptionsAndBuild to false
             --Log Action

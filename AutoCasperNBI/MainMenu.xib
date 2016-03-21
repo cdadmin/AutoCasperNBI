@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="macosx"/>
         <development version="6300" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -31,13 +30,13 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <box borderType="line" id="nhk-LR-cq4">
-                                    <rect key="frame" x="4" y="2" width="207" height="152"/>
+                                    <rect key="frame" x="3" y="2" width="416" height="152"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <view key="contentView">
-                                        <rect key="frame" x="1" y="1" width="205" height="136"/>
+                                        <rect key="frame" x="1" y="1" width="414" height="136"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" doubleValue="50" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="6n1-eD-MAR">
+                                            <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" doubleValue="50" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="6n1-eD-MAR">
                                                 <rect key="frame" x="94" y="6" width="16" height="16"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <connections>
@@ -66,7 +65,7 @@
                                                 </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="01l-Tt-Hu2">
-                                                <rect key="frame" x="96" y="74" width="103" height="24"/>
+                                                <rect key="frame" x="198" y="74" width="103" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" title="Select OS.dmg" id="Irn-bV-aOB">
                                                     <font key="font" metaFont="system"/>
@@ -75,7 +74,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <button verticalHuggingPriority="750" id="8Jb-3B-pku">
-                                                <rect key="frame" x="105" y="43" width="85" height="32"/>
+                                                <rect key="frame" x="209" y="43" width="85" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="push" title="Select.." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uOJ-hR-F8G">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -86,16 +85,8 @@
                                                     <binding destination="Voe-Tx-rLC" name="enabled" keyPath="optionWindowEnabled" id="ZCM-BT-DZt"/>
                                                 </connections>
                                             </button>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="0lp-T6-sZr">
-                                                <rect key="frame" x="3" y="29" width="94" height="106"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyDown" image="DMGFormat" id="vSL-wm-vyH"/>
-                                                <connections>
-                                                    <binding destination="Voe-Tx-rLC" name="hidden" keyPath="yosemiteOS" id="ZVf-Jg-dMw"/>
-                                                </connections>
-                                            </imageView>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Boe-MD-5WL">
-                                                <rect key="frame" x="4" y="33" width="92" height="107"/>
+                                                <rect key="frame" x="86" y="33" width="92" height="107"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="YoYo-diskcopy-doc" id="bGc-5U-erv"/>
                                                 <connections>
@@ -106,77 +97,14 @@
                                                     </binding>
                                                 </connections>
                                             </imageView>
-                                        </subviews>
-                                    </view>
-                                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </box>
-                                <box borderType="line" id="bxD-3m-Aj2">
-                                    <rect key="frame" x="213" y="2" width="207" height="152"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <view key="contentView">
-                                        <rect key="frame" x="1" y="1" width="205" height="136"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        <subviews>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="HC2-XD-atZ">
-                                                <rect key="frame" x="6" y="46" width="87" height="82"/>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="0lp-T6-sZr">
+                                                <rect key="frame" x="83" y="28" width="94" height="106"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyDown" image="Casper Imaging" id="c7f-AK-DFe"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyDown" image="DMGFormat" id="vSL-wm-vyH"/>
+                                                <connections>
+                                                    <binding destination="Voe-Tx-rLC" name="hidden" keyPath="yosemiteOS" id="ZVf-Jg-dMw"/>
+                                                </connections>
                                             </imageView>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="wXG-vf-TW1">
-                                                <rect key="frame" x="10" y="9" width="187" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="7Se-JL-WrX">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                                <connections>
-                                                    <binding destination="Voe-Tx-rLC" name="value" keyPath="selectedAppTextField" id="AVg-5y-pT3"/>
-                                                </connections>
-                                            </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="mTw-of-gdi">
-                                                <rect key="frame" x="101" y="79" width="4" height="17"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="FSA-4s-JzC">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="Re9-gc-CJJ">
-                                                <rect key="frame" x="101" y="79" width="96" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Select Casper Imaging.app" id="hFw-Mo-93m">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                            <button verticalHuggingPriority="750" id="Khe-LZ-GNX">
-                                                <rect key="frame" x="107" y="43" width="85" height="32"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <buttonCell key="cell" type="push" title="Select.." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Zs5-Ih-C9f">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="selectedApp:" target="Voe-Tx-rLC" id="e99-my-Lh5"/>
-                                                    <binding destination="Voe-Tx-rLC" name="enabled" keyPath="optionWindowEnabled" id="UgA-ap-ta7"/>
-                                                </connections>
-                                            </button>
-                                            <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="woH-9j-iiI">
-                                                <rect key="frame" x="94" y="6" width="16" height="16"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <connections>
-                                                    <binding destination="Voe-Tx-rLC" name="hidden" keyPath="cogSelectedApp" id="fkB-om-QkN">
-                                                        <dictionary key="options">
-                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                    <binding destination="Voe-Tx-rLC" name="animate" keyPath="cogSelectedAppAnimate" id="wtT-e9-5zl"/>
-                                                </connections>
-                                            </progressIndicator>
                                         </subviews>
                                     </view>
                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -187,25 +115,13 @@
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
-                    <box autoresizesSubviews="NO" title="JSS URL" borderType="line" id="w0J-uw-3oP">
+                    <box autoresizesSubviews="NO" title="CloneDeploy Service URL" borderType="line" id="w0J-uw-3oP">
                         <rect key="frame" x="6" y="185" width="430" height="118"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="428" height="102"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qrO-dS-2ym">
-                                    <rect key="frame" x="3" y="6" width="103" height="94"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyDown" image="JSS" id="Ibf-nZ-Kpr"/>
-                                    <connections>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="ucJ-JR-0Of">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </imageView>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="lGb-8B-tQq">
                                     <rect key="frame" x="109" y="35" width="303" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -228,39 +144,6 @@
                                     </textFieldCell>
                                     <connections>
                                         <binding destination="Voe-Tx-rLC" name="value" keyPath="jssAndCasperImagingVersionCheckTextfield" id="nO1-Wg-Y2h"/>
-                                    </connections>
-                                </textField>
-                                <textField verticalHuggingPriority="750" id="3TG-5f-y7x">
-                                    <rect key="frame" x="110" y="52" width="285" height="22"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="" drawsBackground="YES" usesSingleLineMode="YES" id="ciO-jn-z84">
-                                        <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <connections>
-                                        <action selector="checkJSSURL:" target="Voe-Tx-rLC" id="P5U-wH-Auw"/>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="Cp0-7a-RJ5">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="jssURL" id="3qs-Lq-30C">
-                                            <dictionary key="options">
-                                                <bool key="NSConditionallySetsEditable" value="NO"/>
-                                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                <string key="NSNullPlaceholder">Optional. Enter JSS URL here.</string>
-                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="Voe-Tx-rLC" name="enabled2" keyPath="optionWindowEnabled" previousBinding="Cp0-7a-RJ5" id="Suh-oK-Jw8">
-                                            <dictionary key="options">
-                                                <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                                <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                                <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                                <integer key="NSNullPlaceholder" value="-1"/>
-                                            </dictionary>
-                                        </binding>
                                     </connections>
                                 </textField>
                                 <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="8ZA-2c-pj2">
@@ -299,236 +182,51 @@
                                         </binding>
                                     </connections>
                                 </button>
-                            </subviews>
-                        </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </box>
-                    <box autoresizesSubviews="NO" title="NetBoot Required Settings" borderType="line" id="ecW-4W-wCb">
-                        <rect key="frame" x="6" y="36" width="430" height="145"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="428" height="129"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="TWf-5D-8nu">
-                                    <rect key="frame" x="-7" y="-2" width="118" height="137"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <imageCell key="cell" controlSize="small" enabled="NO" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NetBootVolume" id="YAJ-Ux-tnJ"/>
+                                <textField verticalHuggingPriority="750" id="3TG-5f-y7x">
+                                    <rect key="frame" x="110" y="52" width="285" height="22"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="" drawsBackground="YES" usesSingleLineMode="YES" id="ciO-jn-z84">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
                                     <connections>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="BG0-BH-JnP">
+                                        <action selector="checkJSSURL:" target="Voe-Tx-rLC" id="P5U-wH-Auw"/>
+                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="Cp0-7a-RJ5">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="jssURL" id="3qs-Lq-30C">
+                                            <dictionary key="options">
+                                                <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                <string key="NSNullPlaceholder">Optional. Enter JSS URL here.</string>
+                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="Voe-Tx-rLC" name="enabled2" keyPath="optionWindowEnabled" previousBinding="Cp0-7a-RJ5" id="Suh-oK-Jw8">
+                                            <dictionary key="options">
+                                                <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                <integer key="NSNullPlaceholder" value="-1"/>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </textField>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qrO-dS-2ym">
+                                    <rect key="frame" x="3" y="6" width="103" height="94"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyDown" image="Clonedeploy" id="Ibf-nZ-Kpr"/>
+                                    <connections>
+                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="ucJ-JR-0Of">
                                             <dictionary key="options">
                                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                                             </dictionary>
                                         </binding>
                                     </connections>
                                 </imageView>
-                                <textField verticalHuggingPriority="750" id="syP-ae-A2S">
-                                    <rect key="frame" x="206" y="100" width="204" height="19"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <string key="toolTip">The NetBoot's name as it will appear in the Startup Disk pane in System Preferences &amp; Startup Manager. This is needed, but if you are using the NETSUS appliance, it will show as "Faux NetBoot"</string>
-                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Required" drawsBackground="YES" id="opj-5r-fCA">
-                                        <font key="font" metaFont="smallSystem"/>
-                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        <connections>
-                                            <binding destination="Voe-Tx-rLC" name="value" keyPath="netBootNameTextField" id="Nse-2B-jx4">
-                                                <dictionary key="options">
-                                                    <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
-                                                    <bool key="NSConditionallySetsEditable" value="NO"/>
-                                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                                    <bool key="NSValidatesImmediately" value="YES"/>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
-                                    </textFieldCell>
-                                    <connections>
-                                        <action selector="netBootName:" target="Voe-Tx-rLC" id="Xti-Nc-KKr"/>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="Whu-Lf-ra7">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BYx-5k-ywl">
-                                    <rect key="frame" x="116" y="102" width="84" height="14"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <string key="toolTip">The NetBoot's name as it will appear in the Startup Disk pane in System Preferences. This is needed, but if you are using the NETSUS appliance, it will show as "Faux NetBoot"</string>
-                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="NetBoot Name:" id="hal-lx-b20">
-                                        <font key="font" metaFont="smallSystem"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <connections>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="5N9-um-WDD">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </textField>
-                                <textField toolTip="Automatically generates a NetBoot Image index within the range  1-4095. Unticking allows you to set your own Index." horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ugC-wk-VAP">
-                                    <rect key="frame" x="116" y="52" width="119" height="16"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="NetBoot Image Index:" id="dyf-YR-rvo">
-                                        <font key="font" metaFont="smallSystem"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                </textField>
-                                <button toolTip="Automatically generates a NetBoot Image index within the range  1-4095. Unticking allows you to set your own Index." id="La7-3M-oZg">
-                                    <rect key="frame" x="138" y="29" width="246" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="check" title="Will be served from more than one server" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" inset="2" id="H3E-9i-ZT4">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="smallSystem"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="netBootImageIndex:" target="Voe-Tx-rLC" id="4gm-oP-B1W"/>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="Okc-6m-lC8">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="netBootImageIndexLoadBalanced" id="kP1-ac-tnJ">
-                                            <dictionary key="options">
-                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
-                                                <bool key="NSConditionallySetsEnabled" value="NO"/>
-                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </button>
-                                <button id="klK-eR-rye">
-                                    <rect key="frame" x="138" y="77" width="246" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <string key="toolTip">If NetBoot is to be served from a NetSUS appliance then the name cannot contain spaces, ticking this will remove spaces from the name.</string>
-                                    <buttonCell key="cell" type="check" title="Will be served from NetSUS or BSDPy" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" inset="2" id="ePG-Pe-Zsf">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="smallSystem"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="servedFromNetSUS:" target="Voe-Tx-rLC" id="I0F-H5-4yD"/>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="Ngd-CU-Tkq">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="servedFromNetSUS" id="EuF-rK-2dg">
-                                            <dictionary key="options">
-                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
-                                                <bool key="NSConditionallySetsEnabled" value="NO"/>
-                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </button>
-                                <textField verticalHuggingPriority="750" id="BjK-SF-Kyy">
-                                    <rect key="frame" x="236" y="52" width="48" height="19"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="0" drawsBackground="YES" id="q2q-xA-ONJ">
-                                        <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="0" negativeFormat="-0.00" localizesFormat="NO" hasThousandSeparators="NO" thousandSeparator="," id="GBD-ii-qib">
-                                            <attributedString key="attributedStringForZero">
-                                                <fragment content="0.00"/>
-                                            </attributedString>
-                                            <decimal key="minimum" value="NaN"/>
-                                            <decimal key="maximum" value="NaN"/>
-                                        </numberFormatter>
-                                        <font key="font" metaFont="smallSystem"/>
-                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <connections>
-                                        <action selector="netBootImageIndexCheck:" target="Voe-Tx-rLC" id="Xeg-Jy-gZW"/>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="kqt-wo-2Fr">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="Voe-Tx-rLC" name="maxValue" keyPath="netBootImageIndexMaxValue" id="YLL-e2-PbT">
-                                            <dictionary key="options">
-                                                <string key="NSNullPlaceholder">Required</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="Voe-Tx-rLC" name="minValue" keyPath="netBootImageIndexMinValue" previousBinding="YLL-e2-PbT" id="n18-Ub-Bik"/>
-                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="netBootImageIndexTextField" previousBinding="n18-Ub-Bik" id="u54-Xe-yjE">
-                                            <dictionary key="options">
-                                                <bool key="NSAlwaysPresentsApplicationModalAlerts" value="YES"/>
-                                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="tyg-SW-ohT">
-                                    <rect key="frame" x="154" y="8" width="99" height="14"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="Serve Image over:" id="Uc2-JG-ADZ">
-                                        <font key="font" metaFont="smallSystem"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <connections>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="sa6-h9-k9q">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </textField>
-                                <matrix verticalHuggingPriority="750" allowsEmptySelection="NO" id="5JR-bH-RBG">
-                                    <rect key="frame" x="259" y="6" width="108" height="18"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="cellSize" width="50" height="18"/>
-                                    <size key="intercellSpacing" width="4" height="2"/>
-                                    <buttonCell key="prototype" type="radio" title="Radio" imagePosition="left" alignment="left" controlSize="small" enabled="NO" inset="2" id="z52-1y-nmX">
-                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                        <font key="font" metaFont="smallSystem"/>
-                                    </buttonCell>
-                                    <cells>
-                                        <column>
-                                            <buttonCell type="radio" title="HTTP" imagePosition="left" alignment="left" controlSize="small" enabled="NO" state="on" inset="2" id="grk-LX-agl">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <connections>
-                                                    <action selector="netbootServeOverHTTPSelected:" target="Voe-Tx-rLC" id="ehy-hE-G1S"/>
-                                                    <binding destination="Voe-Tx-rLC" name="value" keyPath="netBootServeOverNFS" id="wkx-kw-Zu0">
-                                                        <dictionary key="options">
-                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                        </dictionary>
-                                                    </binding>
-                                                </connections>
-                                            </buttonCell>
-                                        </column>
-                                        <column>
-                                            <buttonCell type="radio" title="NFS" imagePosition="left" alignment="left" controlSize="small" enabled="NO" inset="2" id="AzK-cL-eZa">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <connections>
-                                                    <action selector="netbootServeOverNFSSelected:" target="Voe-Tx-rLC" id="Tan-I4-yb5"/>
-                                                    <binding destination="Voe-Tx-rLC" name="value" keyPath="netBootServeOverNFS" id="fSy-07-3bR"/>
-                                                </connections>
-                                            </buttonCell>
-                                        </column>
-                                    </cells>
-                                    <connections>
-                                        <binding destination="Voe-Tx-rLC" name="hidden" keyPath="disableOptionsAndBuild" id="alE-jP-DHy"/>
-                                    </connections>
-                                </matrix>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="k3e-uq-WZz">
-                                    <rect key="frame" x="284" y="54" width="95" height="14"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="38R-B0-sTX">
-                                        <font key="font" metaFont="smallSystem"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <connections>
-                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="netBootImageIndexLabel" id="W2Q-Zn-ZuS"/>
-                                    </connections>
-                                </textField>
                             </subviews>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -586,6 +284,156 @@
                             </binding>
                         </connections>
                     </button>
+                    <box autoresizesSubviews="NO" title="NetBoot Required Settings" borderType="line" id="ecW-4W-wCb">
+                        <rect key="frame" x="6" y="36" width="430" height="145"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView">
+                            <rect key="frame" x="1" y="1" width="428" height="129"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="TWf-5D-8nu">
+                                    <rect key="frame" x="-7" y="-2" width="118" height="137"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <imageCell key="cell" controlSize="small" enabled="NO" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NetBootVolume" id="YAJ-Ux-tnJ"/>
+                                    <connections>
+                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="BG0-BH-JnP">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </imageView>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BYx-5k-ywl">
+                                    <rect key="frame" x="116" y="102" width="84" height="14"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <string key="toolTip">The NetBoot's name as it will appear in the Startup Disk pane in System Preferences. This is needed, but if you are using the NETSUS appliance, it will show as "Faux NetBoot"</string>
+                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="NetBoot Name:" id="hal-lx-b20">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="5N9-um-WDD">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </textField>
+                                <textField toolTip="Automatically generates a NetBoot Image index within the range  1-4095. Unticking allows you to set your own Index." horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ugC-wk-VAP">
+                                    <rect key="frame" x="116" y="71" width="119" height="16"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" title="NetBoot Image Index:" id="dyf-YR-rvo">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <button toolTip="Automatically generates a NetBoot Image index within the range  1-4095. Unticking allows you to set your own Index." id="La7-3M-oZg">
+                                    <rect key="frame" x="138" y="42" width="246" height="18"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="check" title="Will be served from more than one server" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" inset="2" id="H3E-9i-ZT4">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="smallSystem"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="netBootImageIndex:" target="Voe-Tx-rLC" id="4gm-oP-B1W"/>
+                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="Okc-6m-lC8">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="netBootImageIndexLoadBalanced" id="kP1-ac-tnJ">
+                                            <dictionary key="options">
+                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </button>
+                                <textField verticalHuggingPriority="750" id="BjK-SF-Kyy">
+                                    <rect key="frame" x="236" y="71" width="48" height="19"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="0" drawsBackground="YES" id="q2q-xA-ONJ">
+                                        <numberFormatter key="formatter" formatterBehavior="10_0" positiveFormat="0" negativeFormat="-0.00" localizesFormat="NO" hasThousandSeparators="NO" thousandSeparator="," id="GBD-ii-qib">
+                                            <attributedString key="attributedStringForZero">
+                                                <fragment content="0.00"/>
+                                            </attributedString>
+                                            <decimal key="minimum" value="NaN"/>
+                                            <decimal key="maximum" value="NaN"/>
+                                        </numberFormatter>
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <action selector="netBootImageIndexCheck:" target="Voe-Tx-rLC" id="Xeg-Jy-gZW"/>
+                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="kqt-wo-2Fr">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="Voe-Tx-rLC" name="maxValue" keyPath="netBootImageIndexMaxValue" id="YLL-e2-PbT">
+                                            <dictionary key="options">
+                                                <string key="NSNullPlaceholder">Required</string>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="Voe-Tx-rLC" name="minValue" keyPath="netBootImageIndexMinValue" previousBinding="YLL-e2-PbT" id="n18-Ub-Bik"/>
+                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="netBootImageIndexTextField" previousBinding="n18-Ub-Bik" id="u54-Xe-yjE">
+                                            <dictionary key="options">
+                                                <bool key="NSAlwaysPresentsApplicationModalAlerts" value="YES"/>
+                                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="k3e-uq-WZz">
+                                    <rect key="frame" x="284" y="54" width="95" height="14"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="38R-B0-sTX">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="netBootImageIndexLabel" id="W2Q-Zn-ZuS"/>
+                                    </connections>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="syP-ae-A2S">
+                                    <rect key="frame" x="206" y="100" width="204" height="19"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <string key="toolTip">The NetBoot's name as it will appear in the Startup Disk pane in System Preferences &amp; Startup Manager. This is needed, but if you are using the NETSUS appliance, it will show as "Faux NetBoot"</string>
+                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Required" drawsBackground="YES" id="opj-5r-fCA">
+                                        <font key="font" metaFont="smallSystem"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        <connections>
+                                            <binding destination="Voe-Tx-rLC" name="value" keyPath="netBootNameTextField" id="Nse-2B-jx4">
+                                                <dictionary key="options">
+                                                    <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                    <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                                    <bool key="NSValidatesImmediately" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </textFieldCell>
+                                    <connections>
+                                        <action selector="netBootName:" target="Voe-Tx-rLC" id="Xti-Nc-KKr"/>
+                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="Whu-Lf-ra7">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </box>
                 </subviews>
             </view>
             <point key="canvasLocation" x="139" y="-586"/>
@@ -727,262 +575,23 @@ CA
                 <rect key="frame" x="0.0" y="0.0" width="442" height="587"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <button verticalHuggingPriority="750" id="Ube-VE-dBe">
+                        <rect key="frame" x="364" y="0.0" width="74" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="s3N-kN-AMx">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="closeOptionsWindowCheck:" target="Voe-Tx-rLC" id="80e-Gz-Nwn"/>
+                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="closeOptionsWindowButton" id="oU6-gJ-cQd"/>
+                        </connections>
+                    </button>
                     <tabView initialItem="5Qr-LX-Be4" id="pYi-kB-tNx">
                         <rect key="frame" x="2" y="28" width="437" height="553"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
-                            <tabViewItem label="Always Set" identifier="1" id="ObJ-EC-sRC">
-                                <view key="view" id="sgz-Bf-xLl">
-                                    <rect key="frame" x="10" y="33" width="417" height="507"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <box autoresizesSubviews="NO" borderType="line" id="NcA-HU-27O">
-                                            <rect key="frame" x="2" y="-3" width="409" height="510"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
-                                                <rect key="frame" x="1" y="1" width="407" height="494"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <box autoresizesSubviews="NO" title="Box" borderType="line" titlePosition="noTitle" id="dsm-cS-rQQ">
-                                                        <rect key="frame" x="15" y="387" width="377" height="99"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <view key="contentView">
-                                                            <rect key="frame" x="1" y="1" width="375" height="97"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                            <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="OES-T8-5YN">
-                                                                    <rect key="frame" x="16" y="51" width="343" height="34"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" title="The below are automatically set via AutoCasperNBI for your NetBoot creation pleasure.        " id="ita-kW-hMa">
-                                                                        <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="xou-bT-1OE">
-                                                                    <rect key="frame" x="16" y="-9" width="343" height="55"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" title="Hold the mouse cursor over a setting to display it's Tool Tip, this will give more information." id="TQR-Ut-822">
-                                                                        <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
-                                                            </subviews>
-                                                        </view>
-                                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    </box>
-                                                    <button toolTip="Auto logs in as Root" allowsExpansionToolTips="YES" id="YGI-gl-o1f">
-                                                        <rect key="frame" x="35" y="291" width="203" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Auto login as Root" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="l5c-Qx-aOC">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Enables root acount with the password: netboot" id="a0U-xS-eC4">
-                                                        <rect key="frame" x="35" y="306" width="203" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Create Root account" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="ABj-yU-V0S">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Disables the Screen Saver for the root account." id="6df-kB-PSd">
-                                                        <rect key="frame" x="35" y="276" width="261" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Disables Screen Saver for Root account" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="aFe-Iq-IoB">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Disables App Nap incase it interferes with use cases where the NBI is being used for diagnostic or stress testing." id="DsR-ZJ-XsR">
-                                                        <rect key="frame" x="35" y="141" width="259" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Disables App Nap" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="T14-nT-rss">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Disables Software Update from running." id="hRi-6W-ZwG">
-                                                        <rect key="frame" x="35" y="126" width="259" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Disables Software Update" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="nBR-fM-XKp">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Disables Spotlight, removing it's launchDaemons " id="Mcy-TJ-LAd">
-                                                        <rect key="frame" x="35" y="111" width="259" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Disables Spotlight" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="DjW-iL-Ppl">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Deletes the com.apple.dockfixup.plist to stop extra items from being added to the root users Dock." id="HMg-iY-0MA">
-                                                        <rect key="frame" x="35" y="261" width="259" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Deletes com.apple.dockfixup.plist" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="ibB-Rb-7i0">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Creates a Dock for the root user containing only the Finder, Casper Imaging &amp; Trash." id="S5e-GW-V6k">
-                                                        <rect key="frame" x="35" y="246" width="277" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Creates a minimal Dock for root account" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="L98-7A-iWs">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Creates the debug folder within the Casper Imaging.app to enable debug mode." id="Rnz-7H-s7b">
-                                                        <rect key="frame" x="35" y="201" width="259" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Enables Casper Imaging's Debug Mode" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="l3s-fy-J9Z">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Launches Casper Imaging at login" id="Twn-Pa-2K4">
-                                                        <rect key="frame" x="35" y="216" width="336" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Launches Casper Imaging at login" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="Kif-bY-Blb">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Copies the selected Casper Imaging to the NBI's /Application/ folder." id="uyM-Xe-Lku">
-                                                        <rect key="frame" x="35" y="231" width="336" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Copies Caper Imaging to NBI's Applications folder" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="pI8-jp-PM4">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Remove Casper Imaging's quarantine flag (if present)." id="f2H-ec-FN5">
-                                                        <rect key="frame" x="35" y="186" width="287" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Removes Casper Imaging's Quarantine Flag" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="WW4-rQ-RUC">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button id="QRz-XQ-y7h">
-                                                        <rect key="frame" x="35" y="171" width="291" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <string key="toolTip">Imports the cert for the JSS (if the JSS URL has been given &amp; was contactable), also imports the certificate as a trusted root certificate.</string>
-                                                        <buttonCell key="cell" type="check" title="Imports JSS CA Certificated &amp; trust as a root" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="lKd-P2-xpO">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Sets the NetBoot Image to diskless." id="EIv-Ya-yAR">
-                                                        <rect key="frame" x="35" y="51" width="239" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Enables Diskless NetBoot" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="cpE-U7-eM3">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Supresses the Diagnostic Usage prompt that appears when logging into a new account on 10.10.x." id="MYD-PU-HMw">
-                                                        <rect key="frame" x="35" y="321" width="297" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Suppresses Diagnostics Prompt (10.10.x)" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="kSK-se-xCE">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Disables GateKeeper" id="FWF-ak-T3V">
-                                                        <rect key="frame" x="35" y="81" width="201" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Disables GateKeeper" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="rMS-x4-c4o">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Enables Disk Utilities Debug menu for assisting when troubleshooting disks." id="s86-zO-Wj4">
-                                                        <rect key="frame" x="35" y="66" width="230" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Enables Disk Utilities Debug Menu" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="dCt-te-XnD">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Reduces Kernel Cache to less than 32MB for booting some older Macs." id="zSA-ei-o2g">
-                                                        <rect key="frame" x="35" y="366" width="303" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Reduces Kernel Cache if a 10.9.x NBI" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" enabled="NO" state="on" inset="2" id="clj-F4-42Z">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Suppresses Apple's Setup Assistant" id="EVN-8i-mhu">
-                                                        <rect key="frame" x="35" y="351" width="208" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Supresses Apple Setup Assistant" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="ww3-BN-oT4">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Supresses the iCloud Setup Assitant that appears when logging into a new account." id="1WF-ar-hSo">
-                                                        <rect key="frame" x="35" y="336" width="239" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Supresses iCloud Setup Assistant" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="g6x-xT-IBA">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Stops TimeMachine from asking for new disks to be used for backing up too." id="DIn-tD-gcy">
-                                                        <rect key="frame" x="35" y="96" width="212" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Disables TimeMachine prompts" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="ZZC-SV-Pga">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="The NetBoot Image will be expanded to 64GB, this allows the NetBoot to use upto 64GB of RAM to cache it's startup disk." id="jt4-5q-AGt">
-                                                        <rect key="frame" x="35" y="36" width="239" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Expands NetBoot Image to 64GB" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="5ah-Wn-bhf">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="The NetBoot Image is compacted so as to take up as little disk space on the NetBoot Server." id="6uV-X8-Nwy">
-                                                        <rect key="frame" x="35" y="21" width="239" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Compacts NetBoot Image" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="zZH-bC-KPt">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="The NetBoot.sparseimage is renamed NetBoot.dmg for hosting on some NetBoot Servers" id="qbJ-GG-PGP">
-                                                        <rect key="frame" x="35" y="6" width="331" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Renames Sparseimage to DMG" bezelStyle="regularSquare" imagePosition="left" controlSize="small" enabled="NO" state="on" inset="2" id="1Sn-AO-31J">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                    <button toolTip="Sets Casper Imaging to allow an invalid JSS cert, is a JSS URL is specified." id="0Oz-mG-uD8">
-                                                        <rect key="frame" x="34" y="155" width="292" height="22"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Enables invalid JSS Cert (if a JSS URL is given)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" enabled="NO" state="on" inset="2" id="HJw-tQ-6LT">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                </subviews>
-                                            </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
-                                    </subviews>
-                                </view>
-                            </tabViewItem>
                             <tabViewItem label="Standard" identifier="2" id="5Qr-LX-Be4">
                                 <view key="view" id="tM3-KF-Rhd">
                                     <rect key="frame" x="10" y="33" width="417" height="507"/>
@@ -3634,18 +3243,6 @@ CA
                             </tabViewItem>
                         </tabViewItems>
                     </tabView>
-                    <button verticalHuggingPriority="750" id="Ube-VE-dBe">
-                        <rect key="frame" x="364" y="0.0" width="74" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="s3N-kN-AMx">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="closeOptionsWindowCheck:" target="Voe-Tx-rLC" id="80e-Gz-Nwn"/>
-                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="closeOptionsWindowButton" id="oU6-gJ-cQd"/>
-                        </connections>
-                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="-542" y="130.5"/>
@@ -3986,12 +3583,11 @@ DQ
         <image name="AlertStopIcon" width="512" height="512"/>
         <image name="AutoCasperNBI" width="512" height="512"/>
         <image name="CDiskImage" width="128" height="128"/>
-        <image name="Casper Imaging" width="512" height="512"/>
         <image name="CertStackLarge" width="76" height="65"/>
         <image name="Clock" width="512" height="512"/>
+        <image name="Clonedeploy" width="128" height="128"/>
         <image name="DMGFormat" width="128" height="128"/>
         <image name="Finder" width="512" height="512"/>
-        <image name="JSS" width="128" height="128"/>
         <image name="Localization" width="512" height="512"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRefreshFreestandingTemplate" width="14" height="14"/>

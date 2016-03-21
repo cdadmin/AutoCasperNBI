@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>com.AutoCasperNBI.CasperImaging</string>
+	<string>com.AutoCloneDeployNBI.CloneDeployImaging</string>
 	<key>Program</key>
-		<string>/Applications/Casper Imaging.app/Contents/MacOS/Casper Imaging</string>
+	<string>/Applications/Casper Imaging.app/Contents/MacOS/Casper Imaging</string>
 	<key>RunAtLoad</key>
 	<true/>
 </dict>
