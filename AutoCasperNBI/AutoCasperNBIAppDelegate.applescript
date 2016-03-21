@@ -132,7 +132,7 @@ script AutoCasperNBIAppDelegate
     property warningJSSURL : false
     property cogJSSURL : false
     property cogJSSURLAnimate: true
-    property JSSOptionsDisabled : true
+    property JSSOptionsDisabled : false
     property minorJSSAndCasperImagingVersionDiff : false
     property buildButtonDisabled : true
     property optionsButtonDisabled : true
@@ -153,7 +153,6 @@ script AutoCasperNBIAppDelegate
     property netBootCreationSuccessful : false
     property netBootServeOverNFS : false
     property customDesktopImageEnabled : false
-    property installRCNetBootSelected : true
     property timeServerOptionsEnabled : false
     property createReadOnlyDMG : false
     property userNotifyErrorHidden : true
@@ -260,7 +259,6 @@ script AutoCasperNBIAppDelegate
                                             timeZoneSelected:timeZoneSelected, ¬
                                             languageSelected:languageSelected, ¬
                                             inputLanguageSelected:inputLanguageSelected, ¬
-                                            installRCNetBootSelected:installRCNetBootSelected, ¬
                                             createReadOnlyDMG:createReadOnlyDMG, ¬
                                             simpleFinderEnabled:simpleFinderEnabled, ¬
                                             additionalCerts:additionalCerts, ¬
@@ -286,7 +284,6 @@ script AutoCasperNBIAppDelegate
         tell defaults to set my timeZoneSelected to objectForKey_("timeZoneSelected") as string
         tell defaults to set my languageSelected to objectForKey_("languageSelected") as string
         tell defaults to set my inputLanguageSelected to objectForKey_("inputLanguageSelected") as string
-        tell defaults to set my installRCNetBootSelected to objectForKey_("installRCNetBootSelected") as boolean
         tell defaults to set my createReadOnlyDMG to objectForKey_("createReadOnlyDMG") as boolean
         tell defaults to set my simpleFinderEnabled to objectForKey_("simpleFinderEnabled") as boolean
         tell defaults to set my additionalCerts to objectForKey_("additionalCerts") as list
@@ -602,7 +599,7 @@ script AutoCasperNBIAppDelegate
                 set logMe to "Trying to get JSS version"
                 logToFile_(me)
                 -- Try & get URL using insecure method, this way it will work with or without a valid SSL cert, timesout after 30 seconds
-                set jssURLHtml to do shell script "/usr/bin/curl -k " & jssURL & "/jss.html -m 30"
+                set jssURLHtml to do shell script "/usr/bin/curl -k " & jssURL & "/Test -m 30"
                 --Log Action
                 set logMe to "Checking returned data for JSS version"
                 logToFile_(me)
@@ -648,19 +645,7 @@ script AutoCasperNBIAppDelegate
         set logMe to "Checking JSS Version from " & jssURL
         logToFile_(me)
         try
-            -- Store delimiters for resetting later
-            set applescriptsDelims to AppleScript's text item delimiters
-            -- We only need the content between the title tags
-            set startTag to "<meta name=\"version\" content=\""
-            set endTag to "\">"
-            -- Split at the <title> tag
-            set AppleScript's text item delimiters to startTag
-            set jssVersionCut to text item 2 of jssURLHtml
-            -- Split again at </title>
-            set AppleScript's text item delimiters to endTag
-            set jssVersion to text item 1 of jssVersionCut
-            -- Reset delimiters
-            set AppleScript's text item delimiters to applescriptsDelims
+            set jssVersion to jssURLHtml
             -- Return JSS Version
             set logMe to "JSS is: " & jssVersion
             logToFile_(me)
@@ -668,8 +653,6 @@ script AutoCasperNBIAppDelegate
             doResetJSSURLIcons_(me)
             -- Update lable with JSS Version
             set my enteredJSSURLTextField to "JSS " & jssVersion
-            -- Compare JSS & Casper Imaging Versions
-            checkJSSAndImagingVersions_(me)
             -- Delay needed to update label
             delay 0.1
         -- Error if there is an issue
@@ -680,72 +663,12 @@ script AutoCasperNBIAppDelegate
             -- Reset JSS URL icons
             doResetJSSURLIcons_(me)
             -- Update text field with error
-            set my enteredJSSURLTextField to "Cannot get JSS version"
+            set my enteredJSSURLTextField to "Cannot get JSS version" & jssURLHtml
             -- Reset delimiters
             set AppleScript'stext item delimiters to applescriptsDelims
         end try
     end getJSSVersion_
 
-    -- Check JSS version against supplied Casper Imaging.app
-    on checkJSSAndImagingVersions_(sender)
-        -- Variables to mess with, keeping the orignal with their decimals
-        set selectedCasperImagingAppVersionToDelim to selectedCasperImagingAppVersion
-        set jssVersionToDelim to jssVersion
-        -- Store delimiters for resetting later
-        set applescriptsDelims to AppleScript's text item delimiters
-        -- Set delimiters to decimal
-        set AppleScript's text item delimiters to "."
-        -- Set variables to the split versions of Casper Imaging & JSS versions
-        set selectedCasperImagingAppVersionToDelim to selectedCasperImagingAppVersionToDelim's text items
-        set jssVersionToDelim to jssVersionToDelim's text items
-        -- Reset delimiters
-        set AppleScript's text item delimiters to applescriptsDelims
-        -- Set to major version of Casper Imaging
-        set selectedCasperImagingAppVersionMajor to item 1 of selectedCasperImagingAppVersion
-        -- Set to major version of JSS
-        set jssVersionMajor to item 1 of my jssVersion
-        -- Set to minor version of Casper Imaging
-        set selectedCasperImagingAppVersionMinor to items 2 thru end of selectedCasperImagingAppVersion
-        -- Set to minor version of JSS
-        set jssVersionMinor to items 2 thru end of jssVersion
-        -- If major versions do not match, bad things can happen. But we'll not stop incase this nbi is being created before uprading JSS
-        if selectedCasperImagingAppVersionMajor is not equal to jssVersionMajor then
-            -- Warn if major version diff
-            set logMe to "Major Version Difference"
-            logToFile_(me)
-            -- Reset Selected App Icons
-            doResetSelectedAppIcons_(me)
-            -- Reset JSS URL icons
-            doResetJSSURLIcons_(me)
-            -- Update lable with JSS & Casper Imaging version comparison result
-            set my jssAndCasperImagingVersionCheckTextfield to "Major version difference between JSS & Casper Imaging"
-            -- If major versions match
-        else if selectedCasperImagingAppVersionMajor is equal to jssVersionMajor then
-            -- Check if minor versions match, alert if not
-            if selectedCasperImagingAppVersionMinor is not equal to jssVersionMinor then
-                -- Log Minor Version Diff
-                set logMe to "Minor Version Difference"
-                logToFile_(me)
-                -- Reset Selected App Icons
-                doResetSelectedAppIcons_(me)
-                -- Reset JSS URL icons
-                doResetJSSURLIcons_(me)
-                set my disableOptionsAndBuild to false
-                -- Update lable with JSS & Casper Imaging version comparison result
-                set my jssAndCasperImagingVersionCheckTextfield to "Minor version difference between JSS & Casper Imaging"
-                -- See if pre-reqs have been met
-                checkIfReadyToProceed_(me)
-            -- If Casper Imaging & JSS are the same version
-            else
-                -- Show check if version received
-                set my checkGreenJSSURL to true
-                -- Update lable with JSS & Casper Imaging version comparison result
-                set my jssAndCasperImagingVersionCheckTextfield to "JSS & Casper Imaging versions match"
-                -- See if pre-reqs have been met
-                checkIfReadyToProceed_(me)
-            end if
-        end if
-    end checkJSSAndImagingVersions_
 
     -- Make sure a name is specified for the NetBoot Image, error if not.
     on netBootName_(sender)
@@ -1284,16 +1207,6 @@ script AutoCasperNBIAppDelegate
         logToFile_(me)
     end inputLanguage_
 
-    -- Bound to "Install modified rc.netboot file" checkbox, sets plist
-    on installRCNetBootCheckBox_(sender)
-        -- Set to variable to boolean
-        set installRCNetBootSelected to installRCNetBootSelected as boolean
-        -- Update plist with selection
-        tell defaults to setObject_forKey_(installRCNetBootSelected, "installRCNetBootSelected")
-        --Log Action
-        set logMe to "Install rc.netboot set to: " & installRCNetBootSelected
-        logToFile_(me)
-    end installRCNetBootCheckBox_
 
     -- Bound to "Create Restorable DMG" checkbox, sets plist
     on createReadOnlyDMGCheckBox_(sender)
@@ -1734,9 +1647,9 @@ script AutoCasperNBIAppDelegate
             set my buildProcessProgressBarMax to buildProcessProgressBarMax + 1
         end if
         -- if we're installing rc.netboot.pkg
-        if installRCNetBootSelected is true
-            set my buildProcessProgressBarMax to buildProcessProgressBarMax + 2
-        end if
+        
+        set my buildProcessProgressBarMax to buildProcessProgressBarMax + 2
+        
         -- If we have a desktop selected & we can find it
         if desktopImageExists is true
             set my buildProcessProgressBarMax to buildProcessProgressBarMax + 1
@@ -3426,11 +3339,8 @@ script AutoCasperNBIAppDelegate
 
     -- Install rc.netboot.pkg
     on installRCNetboot_(sender)
-        --Set to boolean
-        set installRCNetBootSelected to installRCNetBootSelected as boolean
-        -- if we're installing rc.netboot.pkg
-        if installRCNetBootSelected is true
-            try
+        
+                  try
                 -- Update Build Process Window's Text Field
                 set my buildProcessTextField to "Copying modified /etc/rc.netboot"
                 delay 0.1
@@ -3478,10 +3388,9 @@ script AutoCasperNBIAppDelegate
                 -- Notify of errors or success
                 userNotify_(me)
             end try
-        else
-            -- Set Desktop Image to selected
+                    -- Set Desktop Image to selected
             copyDesktopImage_(me)
-        end if
+        
     end installRCNetboot_
 
     -- Set Desktop Image to selected

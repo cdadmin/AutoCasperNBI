@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
+        <deployment identifier="macosx"/>
         <development version="6300" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
@@ -182,6 +183,18 @@
                                         </binding>
                                     </connections>
                                 </button>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qrO-dS-2ym">
+                                    <rect key="frame" x="3" y="6" width="103" height="94"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyDown" image="Clonedeploy" id="Ibf-nZ-Kpr"/>
+                                    <connections>
+                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="ucJ-JR-0Of">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </imageView>
                                 <textField verticalHuggingPriority="750" id="3TG-5f-y7x">
                                     <rect key="frame" x="110" y="52" width="285" height="22"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -197,14 +210,6 @@
                                                 <string key="NSValueTransformerName">NSNegateBoolean</string>
                                             </dictionary>
                                         </binding>
-                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="jssURL" id="3qs-Lq-30C">
-                                            <dictionary key="options">
-                                                <bool key="NSConditionallySetsEditable" value="NO"/>
-                                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                <string key="NSNullPlaceholder">Optional. Enter JSS URL here.</string>
-                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                            </dictionary>
-                                        </binding>
                                         <binding destination="Voe-Tx-rLC" name="enabled2" keyPath="optionWindowEnabled" previousBinding="Cp0-7a-RJ5" id="Suh-oK-Jw8">
                                             <dictionary key="options">
                                                 <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -213,20 +218,16 @@
                                                 <integer key="NSNullPlaceholder" value="-1"/>
                                             </dictionary>
                                         </binding>
-                                    </connections>
-                                </textField>
-                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qrO-dS-2ym">
-                                    <rect key="frame" x="3" y="6" width="103" height="94"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyDown" image="Clonedeploy" id="Ibf-nZ-Kpr"/>
-                                    <connections>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="ucJ-JR-0Of">
+                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="jssURL" id="gnW-Yc-ghg">
                                             <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                <string key="NSNullPlaceholder">Required. Enter CloneDeploy Service URL</string>
+                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                             </dictionary>
                                         </binding>
                                     </connections>
-                                </imageView>
+                                </textField>
                             </subviews>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -956,50 +957,6 @@ CA
                                     <rect key="frame" x="10" y="33" width="417" height="507"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box autoresizesSubviews="NO" title="Finder" borderType="line" id="A8b-3i-Fjm">
-                                            <rect key="frame" x="7" y="-3" width="402" height="92"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
-                                                <rect key="frame" x="1" y="1" width="400" height="76"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="uDf-cz-zst">
-                                                        <rect key="frame" x="10" y="-1" width="80" height="80"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Finder" id="hdm-A8-gXF"/>
-                                                        <connections>
-                                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="yosemiteOS" id="75j-9D-bZv"/>
-                                                        </connections>
-                                                    </imageView>
-                                                    <button toolTip="Sets Finder to be in Simple mode, his hides desktop icons &amp; stops windows from being opened." id="ZZM-Pw-sfh">
-                                                        <rect key="frame" x="110" y="31" width="151" height="18"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Enable simple Finder" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Hsq-TH-MgF">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="simpleFinderCheckBox:" target="Voe-Tx-rLC" id="Zq4-ZW-5r5"/>
-                                                            <binding destination="Voe-Tx-rLC" name="value" keyPath="simpleFinderEnabled" id="wh7-6r-YlR"/>
-                                                        </connections>
-                                                    </button>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ExQ-Uq-j2W">
-                                                        <rect key="frame" x="3" y="0.0" width="93" height="80"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="YoYo-FinderIcon" id="Dof-4s-Owc"/>
-                                                        <connections>
-                                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="yosemiteOS" id="fTD-Sk-LCd">
-                                                                <dictionary key="options">
-                                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                                </dictionary>
-                                                            </binding>
-                                                        </connections>
-                                                    </imageView>
-                                                </subviews>
-                                            </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
                                         <box autoresizesSubviews="NO" title="Create A Restorable DMG" borderType="line" id="Ha5-af-5KB">
                                             <rect key="frame" x="7" y="174" width="402" height="92"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1024,50 +981,6 @@ CA
                                                             <binding destination="Voe-Tx-rLC" name="value" keyPath="createReadOnlyDMG" id="ssS-wV-2EZ"/>
                                                         </connections>
                                                     </button>
-                                                </subviews>
-                                            </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
-                                        <box autoresizesSubviews="NO" title="rc.netboot" borderType="line" id="9XK-71-53R">
-                                            <rect key="frame" x="7" y="85" width="402" height="92"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <view key="contentView">
-                                                <rect key="frame" x="1" y="1" width="400" height="76"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="AXs-JQ-UxB">
-                                                        <rect key="frame" x="10" y="-1" width="80" height="80"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Scripts" id="YoY-8S-8SB"/>
-                                                        <connections>
-                                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="yosemiteOS" id="zmH-Ww-7YY"/>
-                                                        </connections>
-                                                    </imageView>
-                                                    <button toolTip="Installs a modifed rc.netboot file, this will not create shadow files on the NetBoot server." id="OEs-ku-2dk">
-                                                        <rect key="frame" x="109" y="31" width="183" height="18"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Install modified rc.netboot file" bezelStyle="regularSquare" imagePosition="left" inset="2" id="wqh-6g-HMT">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="smallSystem"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="installRCNetBootCheckBox:" target="Voe-Tx-rLC" id="dyc-GP-MZN"/>
-                                                            <binding destination="Voe-Tx-rLC" name="value" keyPath="installRCNetBootSelected" id="LQX-fz-VMz"/>
-                                                        </connections>
-                                                    </button>
-                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aXn-LJ-L9x">
-                                                        <rect key="frame" x="10" y="0.0" width="80" height="80"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="YoYo-ExecutableBinaryIcon" id="RVV-ks-GBE"/>
-                                                        <connections>
-                                                            <binding destination="Voe-Tx-rLC" name="hidden" keyPath="yosemiteOS" id="H6Z-Vr-sLr">
-                                                                <dictionary key="options">
-                                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                                </dictionary>
-                                                            </binding>
-                                                        </connections>
-                                                    </imageView>
                                                 </subviews>
                                             </view>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -3587,7 +3500,6 @@ DQ
         <image name="Clock" width="512" height="512"/>
         <image name="Clonedeploy" width="128" height="128"/>
         <image name="DMGFormat" width="128" height="128"/>
-        <image name="Finder" width="512" height="512"/>
         <image name="Localization" width="512" height="512"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRefreshFreestandingTemplate" width="14" height="14"/>
@@ -3596,12 +3508,9 @@ DQ
         <image name="Package" width="128" height="128"/>
         <image name="RemoteDesktop" width="512" height="512"/>
         <image name="Screensharing" width="512" height="512"/>
-        <image name="Scripts" width="512" height="512"/>
         <image name="ToolbarDesktopFolderIcon" width="512" height="512"/>
         <image name="YoYo-AppIcon" width="512" height="512"/>
         <image name="YoYo-Clock" width="512" height="512"/>
-        <image name="YoYo-ExecutableBinaryIcon" width="512" height="512"/>
-        <image name="YoYo-FinderIcon" width="512" height="512"/>
         <image name="YoYo-Localization" width="512" height="512"/>
         <image name="YoYo-diskcopy-doc" width="512" height="512"/>
         <image name="YoYo-icn_desktop" width="148" height="113"/>
