@@ -168,12 +168,7 @@
                                     </buttonCell>
                                     <connections>
                                         <action selector="checkJSSURL:" target="Voe-Tx-rLC" id="qIV-yE-V0R"/>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="cCs-7b-DlJ">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="Voe-Tx-rLC" name="enabled2" keyPath="optionWindowEnabled" previousBinding="cCs-7b-DlJ" id="an1-lz-wXC">
+                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="optionWindowEnabled" id="k08-yp-amL">
                                             <dictionary key="options">
                                                 <integer key="NSMultipleValuesPlaceholder" value="-1"/>
                                                 <integer key="NSNoSelectionPlaceholder" value="-1"/>
@@ -187,13 +182,6 @@
                                     <rect key="frame" x="3" y="6" width="103" height="94"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyDown" image="Clonedeploy" id="Ibf-nZ-Kpr"/>
-                                    <connections>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="ucJ-JR-0Of">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
                                 </imageView>
                                 <textField verticalHuggingPriority="750" id="3TG-5f-y7x">
                                     <rect key="frame" x="110" y="52" width="285" height="22"/>
@@ -205,12 +193,7 @@
                                     </textFieldCell>
                                     <connections>
                                         <action selector="checkJSSURL:" target="Voe-Tx-rLC" id="P5U-wH-Auw"/>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="disableOptionsAndBuild" id="Cp0-7a-RJ5">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="Voe-Tx-rLC" name="enabled2" keyPath="optionWindowEnabled" previousBinding="Cp0-7a-RJ5" id="Suh-oK-Jw8">
+                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="optionWindowEnabled" id="Izl-dY-Gja">
                                             <dictionary key="options">
                                                 <integer key="NSMultipleValuesPlaceholder" value="-1"/>
                                                 <integer key="NSNoSelectionPlaceholder" value="-1"/>
@@ -233,34 +216,6 @@
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
-                    <button verticalHuggingPriority="750" id="Rb7-IJ-j3O">
-                        <rect key="frame" x="367" y="4" width="72" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Build" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yWt-Je-p5x">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="adminCredentialPrompt:" target="Voe-Tx-rLC" id="8sc-NI-glh"/>
-                            <binding destination="Voe-Tx-rLC" name="enabled2" keyPath="disableOptionsAndBuild" previousBinding="XNC-qR-cJY" id="jpp-g5-bLe">
-                                <dictionary key="options">
-                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                    <integer key="NSNullPlaceholder" value="-1"/>
-                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                </dictionary>
-                            </binding>
-                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="optionWindowEnabled" id="XNC-qR-cJY">
-                                <dictionary key="options">
-                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                    <integer key="NSNullPlaceholder" value="-1"/>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </button>
                     <button verticalHuggingPriority="750" id="k5R-hq-FIE">
                         <rect key="frame" x="3" y="4" width="89" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -435,6 +390,34 @@
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
+                    <button verticalHuggingPriority="750" id="Rb7-IJ-j3O">
+                        <rect key="frame" x="367" y="4" width="72" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Build" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yWt-Je-p5x">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="adminCredentialPrompt:" target="Voe-Tx-rLC" id="8sc-NI-glh"/>
+                            <binding destination="Voe-Tx-rLC" name="enabled2" keyPath="disableOptionsAndBuild" previousBinding="XNC-qR-cJY" id="jpp-g5-bLe">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="optionWindowEnabled" id="XNC-qR-cJY">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                    <integer key="NSNullPlaceholder" value="-1"/>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <point key="canvasLocation" x="139" y="-586"/>

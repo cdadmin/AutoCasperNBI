@@ -5,7 +5,7 @@
 	<key>Label</key>
 	<string>com.AutoCloneDeployNBI.CloneDeployImaging</string>
 	<key>Program</key>
-	<string>/Applications/Casper Imaging.app/Contents/MacOS/Casper Imaging</string>
+	<string>/Applications/CloneDeploy.app/Contents/MacOS/applet</string>
 	<key>RunAtLoad</key>
 	<true/>
 </dict>

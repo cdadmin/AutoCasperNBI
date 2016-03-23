@@ -132,11 +132,11 @@ script AutoCasperNBIAppDelegate
     property warningJSSURL : false
     property cogJSSURL : false
     property cogJSSURLAnimate: true
-    property JSSOptionsDisabled : false
+    property JSSOptionsDisabled : true
     property minorJSSAndCasperImagingVersionDiff : false
     property buildButtonDisabled : true
     property optionsButtonDisabled : true
-    property disableOptionsAndBuild : false
+    property disableOptionsAndBuild : true
     property netBootImageIndexLoadBalanced : false
     property optionWindowEnabled : true
     property netBootImageReduceEnabled : false
@@ -477,7 +477,7 @@ script AutoCasperNBIAppDelegate
         -- Delay needed to update label
         delay 0.1
         -- Set to front window
-        tell application "System Events" to set frontmost of process "AutoCasperNBI" to true
+        tell application "System Events" to set frontmost of process "AutoCloneDeployNBI" to true
         --  Try & mount OS.dmg
         -- Stolen from frogor on IRC with permission :)
         -- Mount OS.dmh & get mount point
@@ -563,7 +563,7 @@ script AutoCasperNBIAppDelegate
     on checkIfReadyToProceed_(sender)
         -- Check to see if we have ticks or minor warning before we proceed
         
-        if selectedOSDMGCheckPass is equal to true
+        if selectedOSDMGCheckPass is equal to true then
             -- Enable Options & Build
             set my disableOptionsAndBuild to false
             --Log Action
@@ -580,10 +580,11 @@ script AutoCasperNBIAppDelegate
 
     -- Check the JSS URL details & try & get version of the JSS
     on checkJSSURL_(sender)
+        
         -- Reset Variable
         set my jssAndCasperImagingVersionCheckTextfield to ""
         -- Make sure jssURL has a value before we proceed
-        if my jssURL as string is not equal to "" then
+
             -- Update plist
             tell defaults to setObject_forKey_(jssURL, "jssURL")
             -- Reset JSS URL icons
@@ -607,36 +608,22 @@ script AutoCasperNBIAppDelegate
                 getJSSVersion_(me)
             -- Error if we cannot get the JSS version
             on error
-                    if jssURL is "missing value" then
-                        -- Reset JSS URL icons
-                        doResetJSSURLIcons_(me)
-                        -- Blank JSS Text Field
-                        set my enteredJSSURLTextField to missing value
-                        -- Delete jssURL from plist
-                        tell defaults to removeObjectForKey_("jssURL")
-                        -- Reset JSS URL
-                        set jssURL to ""
-                    else
+
                         --Log Action
-                        set logMe to "Cannot get JSS Version"
+                        set logMe to "Cannot Contact CloneDeploy Server"
                         logToFile_(me)
                         -- Reset JSS URL icons
                         doResetJSSURLIcons_(me)
                         -- Error if cannot get JSS Version
-                        set logMe to "Cannot get JSS Version"
+                        set logMe to "Cannot Contact CloneDeploy Server"
                         logToFile_(me)
                         -- Update text field with error
-                        set my enteredJSSURLTextField to "Cannot get JSS version"
-                    end if
+                        set my enteredJSSURLTextField to "Cannot Contact CloneDeploy Server"
+
             end try
-        else
-            -- Reset JSS URL icons
-            doResetJSSURLIcons_(me)
-            -- Blank JSS Text Field
-            set my enteredJSSURLTextField to missing value
-            -- Delete jssURL from plist
-            tell defaults to removeObjectForKey_("jssURL")
-        end if
+
+
+        
     end checkJSSURL_
 
     -- Get JSS Version from given URL
@@ -652,7 +639,7 @@ script AutoCasperNBIAppDelegate
             -- Reset JSS URL icons
             doResetJSSURLIcons_(me)
             -- Update lable with JSS Version
-            set my enteredJSSURLTextField to "JSS " & jssVersion
+            set my enteredJSSURLTextField to "Pass: " & jssVersion
             -- Delay needed to update label
             delay 0.1
         -- Error if there is an issue
@@ -3430,8 +3417,7 @@ script AutoCasperNBIAppDelegate
                 --Log Action
                 set logMe to "Set permissions to 755 on " & quoted form of netBootDmgMountPath & "/System/Library/CoreServices/DefaultDesktop.jpg"
                 logToFile_(me)
-                -- Copy Casper Imaging.app selected earlier
-                copyCasperImagingApp_(me)
+               
             on error
                 --Log Action
                 set logMe to "Error: Copying Desktop Image"
@@ -3443,11 +3429,82 @@ script AutoCasperNBIAppDelegate
                 -- Notify of errors or success
                 userNotify_(me)
             end try
-        else
-            -- Copy Casper Imaging.app selected earlier
-            copyCasperImagingApp_(me)
-        end if  
-    end copyDesktopImage_
+        
+        end if
+-- Copy CloneDeploy Imaging Files
+copyCloneDeployImaging_(me)
+end copyDesktopImage_
+
+-- Copy Casper Imaging.app selected earlier
+on copyCloneDeployImaging_(sender)
+    try
+        -- Update Build Process Window's Text Field
+        set my buildProcessTextField to "Installing CloneDeploy Imaging Files"
+        delay 0.1
+        -- Update build Process ProgressBar
+        set my buildProcessProgressBar to buildProcessProgressBar + 1
+        --Log Action
+        set logMe to "Trying To Copy CloneDeploy Imaging Files"
+        logToFile_(me)
+        do shell script "/bin/mkdir -p " & quoted form of netBootDmgMountPath & "/usr/local/bin/" user name adminUserName password adminUsersPassword with administrator privileges
+
+        -- Install com.AutoCasperNBI.CasperImaging.plist from rescources
+        do shell script "/bin/cp " & quoted form of pathToResources & "/jq " & quoted form of netBootDmgMountPath & "/usr/local/bin/" user name adminUserName password adminUsersPassword with administrator privileges
+        
+        do shell script "/bin/cp " & quoted form of pathToResources & "/clonedeploy_login.command " & quoted form of netBootDmgMountPath & "/usr/local/bin/" user name adminUserName password adminUsersPassword with administrator privileges
+        
+        
+        --Log Action
+        set logMe to "Jq Installed"
+        logToFile_(me)
+
+        --Log Action
+        set logMe to "Correcting ownership on " & quoted form of netBootDmgMountPath & "/usr/local/bin/jq"
+        logToFile_(me)
+        -- Correct ownership
+        do shell script "/usr/sbin/chown root:wheel " & quoted form of netBootDmgMountPath & "/usr/local/bin/jq" user name adminUserName password adminUsersPassword with administrator privileges
+        
+        do shell script "/usr/sbin/chown root:wheel " & quoted form of netBootDmgMountPath & "/usr/local/bin/clonedeploy_login.command" user name adminUserName password adminUsersPassword with administrator privileges
+        
+        --Log Action
+        set logMe to "Set ownership to root:wheel on " & quoted form of netBootDmgMountPath & "/usr/local/bin/jq"
+        logToFile_(me)
+
+        --Log Action
+        set logMe to "Trying to correct permissions on " & quoted form of netBootDmgMountPath & "/usr/local/bin/jq"
+        logToFile_(me)
+        -- Making  writable
+        do shell script "/bin/chmod +x " & quoted form of netBootDmgMountPath & "/usr/local/bin/jq" user name adminUserName password adminUsersPassword with administrator privileges
+        do shell script "/bin/chmod +x " & quoted form of netBootDmgMountPath & "/usr/local/bin/clonedeploy_login.command" user name adminUserName password adminUsersPassword with administrator privileges
+        
+        -- Copy CloneDeploy.app & log
+        do shell script "/bin/cp -r " & quoted form of pathToResources & "/CloneDeploy.app " & quoted form of netBootDmgMountPath & "/Applications/" user name adminUserName password adminUsersPassword with administrator privileges
+        
+        set logMe to "CloneDeploy Url: " & jssURL
+        logToFile_(me)
+
+        set endChar to text -1 of jssURL
+        if (endChar is not equal to "/") then
+            set jssURL to jssURL & "/"
+        end if
+        
+        do shell script "/bin/echo " & jssURL & " > " & quoted form of netBootDmgMountPath & "/usr/local/bin/weburl" user name adminUserName password adminUsersPassword with administrator privileges
+        --Log Action
+        set logMe to "Set permissons on " & quoted form of netBootDmgMountPath & "/usr/local/bin/jq to execute"
+        logToFile_(me)
+        installCasperImagingLaunchAgent_(me)
+        on error error_message number error_number
+        --Log Action
+        set logMe to "Error: There was an issue copying CloneDeploy Files. Message: " & error_message & " Number: " & error_number
+        logToFile_(me)
+        -- Set to false to display
+        set my userNotifyErrorHidden to false
+        -- Set Error message
+        set my userNotifyError to "Error: There was an issue copying CloneDeploy Files "
+        -- Notify of errors or success
+        userNotify_(me)
+    end try
+end copyCloneDeployImaging_
 
     -- Copy Casper Imaging.app selected earlier
     on copyCasperImagingApp_(sender)
@@ -3610,9 +3667,8 @@ script AutoCasperNBIAppDelegate
             --Log Action
             set logMe to "Set permissons on " & quoted form of netBootDmgMountPath & "/Library/LaunchAgents/com.AutoCasperNBI.CasperImaging.plist to 644"
             logToFile_(me)
-            -- Get JSS CA Cert if JSS URL given
-            importJSSCACert_(me)
-        on error
+            importAdditionalCerts_(me)
+            on error
             --Log Action
             set logMe to "Error: Installing Casper Imaging LaunchAgent"
             logToFile_(me)
