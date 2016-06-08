@@ -57,6 +57,7 @@
 		7CDD2BC119EC7BAA008D370F /* YoYo-AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7CDD2BBC19EC7BAA008D370F /* YoYo-AppIcon.icns */; };
 		7CEDD051195B8243009DA982 /* Installer.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7CEDD050195B8243009DA982 /* Installer.icns */; };
 		84AECF391C9F41CD00CEDCA0 /* Clonedeploy.icns in Resources */ = {isa = PBXBuildFile; fileRef = 84AECF381C9F41CD00CEDCA0 /* Clonedeploy.icns */; };
+		C31E308B1D088E76006730F4 /* dialog in Resources */ = {isa = PBXBuildFile; fileRef = C31E308A1D088E76006730F4 /* dialog */; };
 		C390BD881CA02A3C007C2DBF /* jq in Resources */ = {isa = PBXBuildFile; fileRef = C390BD871CA02A3C007C2DBF /* jq */; };
 		C390BD8A1CA02F9D007C2DBF /* clonedeploy_login.command in Resources */ = {isa = PBXBuildFile; fileRef = C390BD891CA02F9D007C2DBF /* clonedeploy_login.command */; };
 		C3EC23311CA0805A008306E2 /* CloneDeploy.app in Resources */ = {isa = PBXBuildFile; fileRef = C3EC23301CA0805A008306E2 /* CloneDeploy.app */; };
@@ -131,6 +132,7 @@
 		7CDD2BBC19EC7BAA008D370F /* YoYo-AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "YoYo-AppIcon.icns"; sourceTree = "<group>"; };
 		7CEDD050195B8243009DA982 /* Installer.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Installer.icns; sourceTree = "<group>"; };
 		84AECF381C9F41CD00CEDCA0 /* Clonedeploy.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Clonedeploy.icns; sourceTree = "<group>"; };
+		C31E308A1D088E76006730F4 /* dialog */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = dialog; path = ../dialog; sourceTree = "<group>"; };
 		C390BD871CA02A3C007C2DBF /* jq */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = jq; path = ../../Desktop/jq; sourceTree = "<group>"; };
 		C390BD891CA02F9D007C2DBF /* clonedeploy_login.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = clonedeploy_login.command; path = ../../Desktop/clonedeploy_login.command; sourceTree = "<group>"; };
 		C3EC23301CA0805A008306E2 /* CloneDeploy.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = CloneDeploy.app; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		7C130586193FC0B60060F343 /* AutoCloneDeployNBI */ = {
 			isa = PBXGroup;
 			children = (
+				C31E308A1D088E76006730F4 /* dialog */,
 				7C3759481BC7027900CBB857 /* 10.11NBImageInfo */,
 				7CB60993199189E20068574D /* root.plist */,
 				7C07F19619F10C8B00314193 /* dsa_pub.pem */,
@@ -339,6 +342,7 @@
 				7C13058B193FC0B60060F343 /* InfoPlist.strings in Resources */,
 				7CDD2BC119EC7BAA008D370F /* YoYo-AppIcon.icns in Resources */,
 				7C0E1A291A700D8E0008ED3C /* JSS.icns in Resources */,
+				C31E308B1D088E76006730F4 /* dialog in Resources */,
 				7CC26BDC19DA1DF8002A093B /* rc.netboot in Resources */,
 				7C19700A198058F00092062D /* Scripts.icns in Resources */,
 				84AECF391C9F41CD00CEDCA0 /* Clonedeploy.icns in Resources */,

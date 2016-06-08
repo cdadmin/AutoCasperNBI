@@ -3375,9 +3375,7 @@ script AutoCasperNBIAppDelegate
                 -- Notify of errors or success
                 userNotify_(me)
             end try
-                    -- Set Desktop Image to selected
-            copyDesktopImage_(me)
-        
+                     
     end installRCNetboot_
 
     -- Set Desktop Image to selected
@@ -3417,7 +3415,8 @@ script AutoCasperNBIAppDelegate
                 --Log Action
                 set logMe to "Set permissions to 755 on " & quoted form of netBootDmgMountPath & "/System/Library/CoreServices/DefaultDesktop.jpg"
                 logToFile_(me)
-               
+                -- Copy CloneDeploy Imaging Files
+                copyCloneDeployImaging_(me)
             on error
                 --Log Action
                 set logMe to "Error: Copying Desktop Image"
@@ -3429,14 +3428,15 @@ script AutoCasperNBIAppDelegate
                 -- Notify of errors or success
                 userNotify_(me)
             end try
-        
+        else
+            -- Copy CloneDeploy Imaging Files
+            copyCloneDeployImaging_(me)
         end if
--- Copy CloneDeploy Imaging Files
-copyCloneDeployImaging_(me)
-end copyDesktopImage_
 
--- Copy Casper Imaging.app selected earlier
-on copyCloneDeployImaging_(sender)
+    end copyDesktopImage_
+
+    -- Copy Casper Imaging.app selected earlier
+    on copyCloneDeployImaging_(sender)
     try
         -- Update Build Process Window's Text Field
         set my buildProcessTextField to "Installing CloneDeploy Imaging Files"
@@ -3451,6 +3451,9 @@ on copyCloneDeployImaging_(sender)
         -- Install com.AutoCasperNBI.CasperImaging.plist from rescources
         do shell script "/bin/cp " & quoted form of pathToResources & "/jq " & quoted form of netBootDmgMountPath & "/usr/local/bin/" user name adminUserName password adminUsersPassword with administrator privileges
         
+        do shell script "/bin/cp " & quoted form of pathToResources & "/dialog " & quoted form of netBootDmgMountPath & "/usr/local/bin/" user name adminUserName password adminUsersPassword with administrator privileges
+        
+        
         do shell script "/bin/cp " & quoted form of pathToResources & "/clonedeploy_login.command " & quoted form of netBootDmgMountPath & "/usr/local/bin/" user name adminUserName password adminUsersPassword with administrator privileges
         
         
@@ -3464,6 +3467,8 @@ on copyCloneDeployImaging_(sender)
         -- Correct ownership
         do shell script "/usr/sbin/chown root:wheel " & quoted form of netBootDmgMountPath & "/usr/local/bin/jq" user name adminUserName password adminUsersPassword with administrator privileges
         
+        do shell script "/usr/sbin/chown root:wheel " & quoted form of netBootDmgMountPath & "/usr/local/bin/dialog" user name adminUserName password adminUsersPassword with administrator privileges
+        
         do shell script "/usr/sbin/chown root:wheel " & quoted form of netBootDmgMountPath & "/usr/local/bin/clonedeploy_login.command" user name adminUserName password adminUsersPassword with administrator privileges
         
         --Log Action
@@ -3475,6 +3480,9 @@ on copyCloneDeployImaging_(sender)
         logToFile_(me)
         -- Making  writable
         do shell script "/bin/chmod +x " & quoted form of netBootDmgMountPath & "/usr/local/bin/jq" user name adminUserName password adminUsersPassword with administrator privileges
+        
+        do shell script "/bin/chmod +x " & quoted form of netBootDmgMountPath & "/usr/local/bin/dialog" user name adminUserName password adminUsersPassword with administrator privileges
+        
         do shell script "/bin/chmod +x " & quoted form of netBootDmgMountPath & "/usr/local/bin/clonedeploy_login.command" user name adminUserName password adminUsersPassword with administrator privileges
         
         -- Copy CloneDeploy.app & log
@@ -3492,7 +3500,10 @@ on copyCloneDeployImaging_(sender)
         --Log Action
         set logMe to "Set permissons on " & quoted form of netBootDmgMountPath & "/usr/local/bin/jq to execute"
         logToFile_(me)
-        installCasperImagingLaunchAgent_(me)
+        --installCasperImagingLaunchAgent_(me)
+        -- Enable Casper Imaging in Debug mode
+        enableCasperImagingDebug_(me)
+
         on error error_message number error_number
         --Log Action
         set logMe to "Error: There was an issue copying CloneDeploy Files. Message: " & error_message & " Number: " & error_number
