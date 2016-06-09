@@ -1,5 +1,15 @@
 #!/bin/bash
 
+function clear_and_move_down()
+{
+  clear
+  local line=0
+  while [ "$line" -le "6" ]; do
+    line=$(( $line + 1 ))
+    echo
+  done
+}
+
 function set_curl_command()
 {
   export curlCommand="curl -sSk"
@@ -37,7 +47,7 @@ function test_server_conn()
   fi
 }
 
-clear
+clear_and_move_down
 web=$(cat /usr/local/bin/weburl)
 export web
 set_curl_command
@@ -80,16 +90,18 @@ done
 
 set_curl_auth
 
-clear
+clear_and_move_down
 echo " ** Downloading Core Scripts ** "
-for script_name in cd_global_functions_osx cd_task_select_osx; do
+for script_name in osx_global_functions osx_task_select osx_pull osx_push osx_cancel osx_reporter osx_register osx_ond; do
   dl_result=$($curlAuth --data "scriptName=$script_name" ${web}DownloadCoreScripts -o /usr/local/bin/$script_name -w %{http_code} --connect-timeout 10 --stderr /tmp/clientscriptdlerror)
   check_download $scriptName
   chmod +x /usr/local/bin/$script_name
 done
+
+cp /usr/local/bin/osx_register /var/root/Desktop/
 	
 echo " ...... Complete"
 echo
 sleep 1
-/usr/local/bin/cd_task_select_osx
+/usr/local/bin/osx_task_select
 

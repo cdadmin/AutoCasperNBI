@@ -58,8 +58,8 @@
 		7CEDD051195B8243009DA982 /* Installer.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7CEDD050195B8243009DA982 /* Installer.icns */; };
 		84AECF391C9F41CD00CEDCA0 /* Clonedeploy.icns in Resources */ = {isa = PBXBuildFile; fileRef = 84AECF381C9F41CD00CEDCA0 /* Clonedeploy.icns */; };
 		C31E308B1D088E76006730F4 /* dialog in Resources */ = {isa = PBXBuildFile; fileRef = C31E308A1D088E76006730F4 /* dialog */; };
+		C382C5AC1D09AC5100093DD5 /* clonedeploy_login.command in Resources */ = {isa = PBXBuildFile; fileRef = C382C5AB1D09AC5100093DD5 /* clonedeploy_login.command */; };
 		C390BD881CA02A3C007C2DBF /* jq in Resources */ = {isa = PBXBuildFile; fileRef = C390BD871CA02A3C007C2DBF /* jq */; };
-		C390BD8A1CA02F9D007C2DBF /* clonedeploy_login.command in Resources */ = {isa = PBXBuildFile; fileRef = C390BD891CA02F9D007C2DBF /* clonedeploy_login.command */; };
 		C3EC23311CA0805A008306E2 /* CloneDeploy.app in Resources */ = {isa = PBXBuildFile; fileRef = C3EC23301CA0805A008306E2 /* CloneDeploy.app */; };
 /* End PBXBuildFile section */
 
@@ -133,8 +133,8 @@
 		7CEDD050195B8243009DA982 /* Installer.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Installer.icns; sourceTree = "<group>"; };
 		84AECF381C9F41CD00CEDCA0 /* Clonedeploy.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Clonedeploy.icns; sourceTree = "<group>"; };
 		C31E308A1D088E76006730F4 /* dialog */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = dialog; path = ../dialog; sourceTree = "<group>"; };
+		C382C5AB1D09AC5100093DD5 /* clonedeploy_login.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = clonedeploy_login.command; sourceTree = "<group>"; };
 		C390BD871CA02A3C007C2DBF /* jq */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = jq; path = ../../Desktop/jq; sourceTree = "<group>"; };
-		C390BD891CA02F9D007C2DBF /* clonedeploy_login.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = clonedeploy_login.command; path = ../../Desktop/clonedeploy_login.command; sourceTree = "<group>"; };
 		C3EC23301CA0805A008306E2 /* CloneDeploy.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = CloneDeploy.app; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -193,6 +193,7 @@
 		7C130586193FC0B60060F343 /* AutoCloneDeployNBI */ = {
 			isa = PBXGroup;
 			children = (
+				C382C5AB1D09AC5100093DD5 /* clonedeploy_login.command */,
 				C31E308A1D088E76006730F4 /* dialog */,
 				7C3759481BC7027900CBB857 /* 10.11NBImageInfo */,
 				7CB60993199189E20068574D /* root.plist */,
@@ -204,7 +205,6 @@
 				C3EC23301CA0805A008306E2 /* CloneDeploy.app */,
 				7CC636E5197D444E008473CE /* NBImageInfo.plist */,
 				7CC26BDB19DA1DF8002A093B /* rc.netboot */,
-				C390BD891CA02F9D007C2DBF /* clonedeploy_login.command */,
 				7C55D7EE19DA299000AC599D /* com.apple.dock.plist */,
 				7CCA40B419D9EE9800C7114F /* Boot.sh */,
 				C390BD871CA02A3C007C2DBF /* jq */,
@@ -327,7 +327,6 @@
 				7C83B57419A3B39A00E9572E /* diskcopy.icns in Resources */,
 				7C06F40719DA19680057D6ED /* 10.8+root.plist in Resources */,
 				7CDD2BBD19EC7BAA008D370F /* YoYo-icn_desktop.tiff in Resources */,
-				C390BD8A1CA02F9D007C2DBF /* clonedeploy_login.command in Resources */,
 				7C1305AC193FC10A0060F343 /* osx-jss-login.png in Resources */,
 				7C07F19719F10C8B00314193 /* dsa_pub.pem in Resources */,
 				7C27FA26198C357900BD5A07 /* AlertStopIcon.icns in Resources */,
@@ -365,6 +364,7 @@
 				7C801962196EA9AE0079952B /* AutoCasperNBI.png in Resources */,
 				7C83B57219A3AF3E00E9572E /* Localization.icns in Resources */,
 				7CDD2BBE19EC7BAA008D370F /* YoYo-FinderIcon.icns in Resources */,
+				C382C5AC1D09AC5100093DD5 /* clonedeploy_login.command in Resources */,
 				7C1305AD193FC10A0060F343 /* RemoteDesktop.icns in Resources */,
 				7C3759491BC7027900CBB857 /* 10.11NBImageInfo in Resources */,
 				7C39447E1960C57D00BF371B /* Package.icns in Resources */,
