@@ -57,9 +57,9 @@
 		7CDD2BC119EC7BAA008D370F /* YoYo-AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7CDD2BBC19EC7BAA008D370F /* YoYo-AppIcon.icns */; };
 		7CEDD051195B8243009DA982 /* Installer.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7CEDD050195B8243009DA982 /* Installer.icns */; };
 		84AECF391C9F41CD00CEDCA0 /* Clonedeploy.icns in Resources */ = {isa = PBXBuildFile; fileRef = 84AECF381C9F41CD00CEDCA0 /* Clonedeploy.icns */; };
-		C31E308B1D088E76006730F4 /* dialog in Resources */ = {isa = PBXBuildFile; fileRef = C31E308A1D088E76006730F4 /* dialog */; };
 		C382C5AC1D09AC5100093DD5 /* clonedeploy_login.command in Resources */ = {isa = PBXBuildFile; fileRef = C382C5AB1D09AC5100093DD5 /* clonedeploy_login.command */; };
-		C390BD881CA02A3C007C2DBF /* jq in Resources */ = {isa = PBXBuildFile; fileRef = C390BD871CA02A3C007C2DBF /* jq */; };
+		C382C5AE1D09B0FD00093DD5 /* dialog in Resources */ = {isa = PBXBuildFile; fileRef = C382C5AD1D09B0FD00093DD5 /* dialog */; };
+		C382C5B01D09B17B00093DD5 /* jq in Resources */ = {isa = PBXBuildFile; fileRef = C382C5AF1D09B17B00093DD5 /* jq */; };
 		C3EC23311CA0805A008306E2 /* CloneDeploy.app in Resources */ = {isa = PBXBuildFile; fileRef = C3EC23301CA0805A008306E2 /* CloneDeploy.app */; };
 /* End PBXBuildFile section */
 
@@ -132,9 +132,9 @@
 		7CDD2BBC19EC7BAA008D370F /* YoYo-AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "YoYo-AppIcon.icns"; sourceTree = "<group>"; };
 		7CEDD050195B8243009DA982 /* Installer.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Installer.icns; sourceTree = "<group>"; };
 		84AECF381C9F41CD00CEDCA0 /* Clonedeploy.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Clonedeploy.icns; sourceTree = "<group>"; };
-		C31E308A1D088E76006730F4 /* dialog */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = dialog; path = ../dialog; sourceTree = "<group>"; };
 		C382C5AB1D09AC5100093DD5 /* clonedeploy_login.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = clonedeploy_login.command; sourceTree = "<group>"; };
-		C390BD871CA02A3C007C2DBF /* jq */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = jq; path = ../../Desktop/jq; sourceTree = "<group>"; };
+		C382C5AD1D09B0FD00093DD5 /* dialog */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = dialog; sourceTree = "<group>"; };
+		C382C5AF1D09B17B00093DD5 /* jq */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = jq; sourceTree = "<group>"; };
 		C3EC23301CA0805A008306E2 /* CloneDeploy.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = CloneDeploy.app; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -194,7 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				C382C5AB1D09AC5100093DD5 /* clonedeploy_login.command */,
-				C31E308A1D088E76006730F4 /* dialog */,
+				C382C5AD1D09B0FD00093DD5 /* dialog */,
 				7C3759481BC7027900CBB857 /* 10.11NBImageInfo */,
 				7CB60993199189E20068574D /* root.plist */,
 				7C07F19619F10C8B00314193 /* dsa_pub.pem */,
@@ -206,8 +206,8 @@
 				7CC636E5197D444E008473CE /* NBImageInfo.plist */,
 				7CC26BDB19DA1DF8002A093B /* rc.netboot */,
 				7C55D7EE19DA299000AC599D /* com.apple.dock.plist */,
+				C382C5AF1D09B17B00093DD5 /* jq */,
 				7CCA40B419D9EE9800C7114F /* Boot.sh */,
-				C390BD871CA02A3C007C2DBF /* jq */,
 				7C13059E193FC0CE0060F343 /* MainMenu.xib */,
 				7C130592193FC0B60060F343 /* AutoCasperNBIAppDelegate.applescript */,
 				7C130597193FC0B60060F343 /* Images.xcassets */,
@@ -320,7 +320,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C390BD881CA02A3C007C2DBF /* jq in Resources */,
 				7C1305AB193FC10A0060F343 /* NetBootVolume.icns in Resources */,
 				7C55D7EF19DA299000AC599D /* com.apple.dock.plist in Resources */,
 				C3EC23311CA0805A008306E2 /* CloneDeploy.app in Resources */,
@@ -341,8 +340,8 @@
 				7C13058B193FC0B60060F343 /* InfoPlist.strings in Resources */,
 				7CDD2BC119EC7BAA008D370F /* YoYo-AppIcon.icns in Resources */,
 				7C0E1A291A700D8E0008ED3C /* JSS.icns in Resources */,
-				C31E308B1D088E76006730F4 /* dialog in Resources */,
 				7CC26BDC19DA1DF8002A093B /* rc.netboot in Resources */,
+				C382C5AE1D09B0FD00093DD5 /* dialog in Resources */,
 				7C19700A198058F00092062D /* Scripts.icns in Resources */,
 				84AECF391C9F41CD00CEDCA0 /* Clonedeploy.icns in Resources */,
 				7C9BC9E719EC7EE800C4FDDD /* YoYo-package.icns in Resources */,
@@ -354,6 +353,7 @@
 				7CDCE26C1985A2B8005CE10C /* Clock.png in Resources */,
 				7CDD2BBF19EC7BAA008D370F /* YoYo-ExecutableBinaryIcon.icns in Resources */,
 				7C13059F193FC0CE0060F343 /* MainMenu.xib in Resources */,
+				C382C5B01D09B17B00093DD5 /* jq in Resources */,
 				7CC26BDA19DA1D2C002A093B /* com.AutoCasperNBI.CasperImaging.plist in Resources */,
 				7C130598193FC0B60060F343 /* Images.xcassets in Resources */,
 				7CCA40B719D9F22600C7114F /* com.AutoCasperNBI.boot.plist in Resources */,
