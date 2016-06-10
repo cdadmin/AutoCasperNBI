@@ -186,7 +186,7 @@ script AutoCasperNBIAppDelegate
     property netBootDmgRequiredSize : 0
     property netBootDmgResize : 0
     property timeServerSelected : "time.apple.com"
-    property timeZoneSelected : "Americas/Los_Angeles"
+    property timeZoneSelected : "Americas/New_York"
     property languageSelected : "English : en"
     property inputLanguageSelected : "U.S."
     property NSColor : class "NSColor" of current application
@@ -210,7 +210,7 @@ script AutoCasperNBIAppDelegate
     -- To be run at launch
     on startYourEngines_(sender)
         -- Get AutoCasperNBI version
-        set versionOfAutoCasperNBI to get version of application "AutoCasperNBI"
+        --set versionOfAutoCasperNBI to get version of application "AutoCasperNBI"
         -- Log AutoCasperNBI version
         set logMe to  "AutoCasperNBI " & versionOfAutoCasperNBI
         logToFile_(me)

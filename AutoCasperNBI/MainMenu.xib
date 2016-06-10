@@ -424,25 +424,22 @@
         </window>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
-                <menuItem title="AutoCasperNBI" id="1Xt-HY-uBw">
+                <menuItem title="AutoCloneDeployNBI" id="1Xt-HY-uBw">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="AutoCasperNBI" systemMenu="apple" id="uQy-DD-JDr">
+                    <menu key="submenu" title="AutoCloneDeployNBI" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
-                            <menuItem title="About AutoCasperNBI" id="5kV-Vb-QxS">
+                            <menuItem title="About AutoCloneDeployNBI" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                            <menuItem title="Check For Updates" id="D7p-UP-HXT">
+                            <menuItem title="Check For Updates" hidden="YES" enabled="NO" id="D7p-UP-HXT">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="checkForUpdates:" target="Bye-or-rcj" id="Fo6-De-Lqg"/>
-                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="TC8-dj-Uxm"/>
-                            <menuItem title="Hide AutoCasperNBI" keyEquivalent="h" id="Olw-nP-bQN">
+                            <menuItem title="Hide AutoCloneDeployNBI" keyEquivalent="h" id="Olw-nP-bQN">
                                 <connections>
                                     <action selector="hide:" target="-1" id="PnN-Uc-m68"/>
                                 </connections>
@@ -460,7 +457,7 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                            <menuItem title="Quit AutoCasperNBI" keyEquivalent="q" id="4sb-4s-VLi">
+                            <menuItem title="Quit AutoCloneDeployNBI" keyEquivalent="q" id="4sb-4s-VLi">
                                 <connections>
                                     <action selector="terminate:" target="-1" id="Te7-pn-YzF"/>
                                 </connections>
@@ -516,21 +513,18 @@ CA
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Help" id="AQy-j0-snK">
+                <menuItem title="Help" hidden="YES" enabled="NO" id="AQy-j0-snK">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" id="u9W-cj-AyY">
                         <items>
-                            <menuItem title="User Guide" id="xIl-l1-lV4">
+                            <menuItem title="User Guide" enabled="NO" id="xIl-l1-lV4">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="openUserGuide:" target="Voe-Tx-rLC" id="6oC-XY-Pgm"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Log An Issue" id="wVj-T9-WmT">
+                            <menuItem title="Log An Issue" hidden="YES" enabled="NO" id="wVj-T9-WmT">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="logAnIssue:" target="Voe-Tx-rLC" id="iyq-6M-Jd3"/>
-                                </connections>
                             </menuItem>
                         </items>
                     </menu>
