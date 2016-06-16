@@ -240,7 +240,7 @@
                             </binding>
                         </connections>
                     </button>
-                    <box autoresizesSubviews="NO" title="NetBoot Required Settings" borderType="line" id="ecW-4W-wCb">
+                    <box hidden="YES" autoresizesSubviews="NO" title="NetBoot Required Settings" borderType="line" id="ecW-4W-wCb">
                         <rect key="frame" x="6" y="36" width="430" height="145"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView">
