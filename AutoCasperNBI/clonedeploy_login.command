@@ -54,7 +54,7 @@ set_curl_command
 test_server_conn
 
 loginCount=1
-echo " ** Login To Continue Or Close Window To Cancel ** "
+echo " ** CloneDeploy Login To Continue Or Close Window To Cancel ** "
 echo
 while [ "$loginCount" -le "2" ]; do	
   echo -n "Username: "
@@ -98,7 +98,6 @@ for script_name in osx_global_functions osx_task_select osx_pull osx_push osx_ca
   chmod +x /usr/local/bin/$script_name
 done
 
-cp /usr/local/bin/osx_register /var/root/Desktop/
 	
 echo " ...... Complete"
 echo
