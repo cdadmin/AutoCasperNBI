@@ -3454,7 +3454,7 @@ script AutoCasperNBIAppDelegate
         do shell script "/bin/cp " & quoted form of pathToResources & "/dialog " & quoted form of netBootDmgMountPath & "/usr/local/bin/" user name adminUserName password adminUsersPassword with administrator privileges
         
         
-        do shell script "/bin/cp " & quoted form of pathToResources & "/clonedeploy_login.command " & quoted form of netBootDmgMountPath & "/usr/local/bin/" user name adminUserName password adminUsersPassword with administrator privileges
+        do shell script "/bin/cp " & quoted form of pathToResources & "/mie_start.command " & quoted form of netBootDmgMountPath & "/usr/local/bin/" user name adminUserName password adminUsersPassword with administrator privileges
         
         
         --Log Action
@@ -3469,7 +3469,7 @@ script AutoCasperNBIAppDelegate
         
         do shell script "/usr/sbin/chown root:wheel " & quoted form of netBootDmgMountPath & "/usr/local/bin/dialog" user name adminUserName password adminUsersPassword with administrator privileges
         
-        do shell script "/usr/sbin/chown root:wheel " & quoted form of netBootDmgMountPath & "/usr/local/bin/clonedeploy_login.command" user name adminUserName password adminUsersPassword with administrator privileges
+        do shell script "/usr/sbin/chown root:wheel " & quoted form of netBootDmgMountPath & "/usr/local/bin/mie_start.command" user name adminUserName password adminUsersPassword with administrator privileges
         
         --Log Action
         set logMe to "Set ownership to root:wheel on " & quoted form of netBootDmgMountPath & "/usr/local/bin/jq"
@@ -3483,7 +3483,7 @@ script AutoCasperNBIAppDelegate
         
         do shell script "/bin/chmod +x " & quoted form of netBootDmgMountPath & "/usr/local/bin/dialog" user name adminUserName password adminUsersPassword with administrator privileges
         
-        do shell script "/bin/chmod +x " & quoted form of netBootDmgMountPath & "/usr/local/bin/clonedeploy_login.command" user name adminUserName password adminUsersPassword with administrator privileges
+        do shell script "/bin/chmod +x " & quoted form of netBootDmgMountPath & "/usr/local/bin/mie_start.command" user name adminUserName password adminUsersPassword with administrator privileges
         
         -- Copy CloneDeploy.app & log
         do shell script "/bin/cp -r " & quoted form of pathToResources & "/CloneDeploy.app " & quoted form of netBootDmgMountPath & "/Applications/" user name adminUserName password adminUsersPassword with administrator privileges
