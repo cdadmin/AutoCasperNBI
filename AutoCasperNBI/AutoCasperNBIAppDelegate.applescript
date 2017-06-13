@@ -29,6 +29,7 @@ script AutoCasperNBIAppDelegate
     property selectedAppBundleName : ""
     property selectedCasperImagingAppVersion : ""
     property jssURL : ""
+    property universalToken : ""
     property enteredJSSURLTextField : ""
     property jssURLHtml : ""
     property jssVersion : ""
@@ -587,6 +588,7 @@ script AutoCasperNBIAppDelegate
 
             -- Update plist
             tell defaults to setObject_forKey_(jssURL, "jssURL")
+         
             -- Reset JSS URL icons
             doResetJSSURLIcons_(me)
             -- Update lable to show we're doing something
@@ -3497,7 +3499,14 @@ script AutoCasperNBIAppDelegate
         end if
         
         do shell script "/bin/echo " & jssURL & " > " & quoted form of netBootDmgMountPath & "/usr/local/bin/weburl" user name adminUserName password adminUsersPassword with administrator privileges
-        --Log Action
+        
+       
+        set logMe to "Setting Universal Token To: " & universalToken
+        logToFile_(me)
+        if my universalToken is not ""
+            do shell script "/bin/echo " & universalToken & " > " & quoted form of netBootDmgMountPath & "/usr/local/bin/universaltoken" user name adminUserName password adminUsersPassword with administrator privileges
+        end if
+        
         set logMe to "Set permissons on " & quoted form of netBootDmgMountPath & "/usr/local/bin/jq to execute"
         logToFile_(me)
         --installCasperImagingLaunchAgent_(me)

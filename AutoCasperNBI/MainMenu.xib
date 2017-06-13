@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <development version="6300" identifier="xcode"/>
@@ -15,16 +15,16 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="AutoCloneDeployNBI" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES"/>
-            <rect key="contentRect" x="156" y="73" width="442" height="474"/>
+            <rect key="contentRect" x="156" y="73" width="443" height="378"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <value key="minSize" type="size" width="442" height="468"/>
             <value key="maxSize" type="size" width="442" height="578"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="442" height="474"/>
+                <rect key="frame" x="0.0" y="0.0" width="443" height="378"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <box autoresizesSubviews="NO" title="Required" boxType="oldStyle" borderType="line" id="1bi-R9-8V0">
-                        <rect key="frame" x="9" y="310" width="424" height="159"/>
+                        <rect key="frame" x="9" y="214" width="424" height="159"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="422" height="143"/>
@@ -116,108 +116,8 @@
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
-                    <box autoresizesSubviews="NO" title="CloneDeploy Service URL" borderType="line" id="w0J-uw-3oP">
-                        <rect key="frame" x="6" y="185" width="430" height="118"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <view key="contentView">
-                            <rect key="frame" x="1" y="1" width="428" height="102"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="lGb-8B-tQq">
-                                    <rect key="frame" x="109" y="35" width="303" height="17"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="WvF-74-cNF">
-                                        <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <connections>
-                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="enteredJSSURLTextField" id="oWF-rN-1ej"/>
-                                    </connections>
-                                </textField>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="y5h-BY-jMi">
-                                    <rect key="frame" x="109" y="8" width="303" height="14"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="7C8-1C-tvn">
-                                        <font key="font" metaFont="miniSystem"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <connections>
-                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="jssAndCasperImagingVersionCheckTextfield" id="nO1-Wg-Y2h"/>
-                                    </connections>
-                                </textField>
-                                <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="8ZA-2c-pj2">
-                                    <rect key="frame" x="244" y="14" width="16" height="16"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <connections>
-                                        <binding destination="Voe-Tx-rLC" name="hidden" keyPath="cogJSSURL" id="06h-D4-tBN">
-                                            <dictionary key="options">
-                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="Voe-Tx-rLC" name="animate" keyPath="cogJSSURLAnimate" id="pVX-uq-jzZ"/>
-                                    </connections>
-                                </progressIndicator>
-                                <button toolTip="Refreshes selections above. Useful for rechecking for missing items." id="fPf-0m-Qf5">
-                                    <rect key="frame" x="400" y="52" width="18" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="RKX-Ab-2f7">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="checkJSSURL:" target="Voe-Tx-rLC" id="qIV-yE-V0R"/>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="optionWindowEnabled" id="k08-yp-amL">
-                                            <dictionary key="options">
-                                                <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                                <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                                <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                                <integer key="NSNullPlaceholder" value="-1"/>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </button>
-                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qrO-dS-2ym">
-                                    <rect key="frame" x="3" y="6" width="103" height="94"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyDown" image="Clonedeploy" id="Ibf-nZ-Kpr"/>
-                                </imageView>
-                                <textField verticalHuggingPriority="750" id="3TG-5f-y7x">
-                                    <rect key="frame" x="110" y="52" width="285" height="22"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="" drawsBackground="YES" usesSingleLineMode="YES" id="ciO-jn-z84">
-                                        <font key="font" metaFont="system"/>
-                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <connections>
-                                        <action selector="checkJSSURL:" target="Voe-Tx-rLC" id="P5U-wH-Auw"/>
-                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="jssURL" id="gnW-Yc-ghg">
-                                            <dictionary key="options">
-                                                <bool key="NSConditionallySetsEditable" value="NO"/>
-                                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                <string key="NSNullPlaceholder">Required. Enter CloneDeploy Service URL</string>
-                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                            </dictionary>
-                                        </binding>
-                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="optionWindowEnabled" id="Izl-dY-Gja">
-                                            <dictionary key="options">
-                                                <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                                <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                                <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                                <integer key="NSNullPlaceholder" value="-1"/>
-                                            </dictionary>
-                                        </binding>
-                                    </connections>
-                                </textField>
-                            </subviews>
-                        </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </box>
                     <button verticalHuggingPriority="750" id="k5R-hq-FIE">
-                        <rect key="frame" x="3" y="4" width="89" height="32"/>
+                        <rect key="frame" x="3" y="3" width="89" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Options" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I1y-5x-ovK">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -241,14 +141,14 @@
                         </connections>
                     </button>
                     <box hidden="YES" autoresizesSubviews="NO" title="NetBoot Required Settings" borderType="line" id="ecW-4W-wCb">
-                        <rect key="frame" x="6" y="36" width="430" height="145"/>
+                        <rect key="frame" x="6" y="-143" width="430" height="145"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView">
                             <rect key="frame" x="1" y="1" width="428" height="129"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="TWf-5D-8nu">
-                                    <rect key="frame" x="-7" y="-2" width="118" height="137"/>
+                                    <rect key="frame" x="-7" y="-5" width="118" height="137"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <imageCell key="cell" controlSize="small" enabled="NO" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NetBootVolume" id="YAJ-Ux-tnJ"/>
                                     <connections>
@@ -391,7 +291,7 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <button verticalHuggingPriority="750" id="Rb7-IJ-j3O">
-                        <rect key="frame" x="367" y="4" width="72" height="32"/>
+                        <rect key="frame" x="367" y="3" width="72" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Build" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yWt-Je-p5x">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -418,9 +318,143 @@
                             </binding>
                         </connections>
                     </button>
+                    <box autoresizesSubviews="NO" borderType="line" id="w0J-uw-3oP">
+                        <rect key="frame" x="6" y="32" width="430" height="175"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <view key="contentView">
+                            <rect key="frame" x="1" y="1" width="428" height="159"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="lGb-8B-tQq">
+                                    <rect key="frame" x="109" y="92" width="303" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="WvF-74-cNF">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="enteredJSSURLTextField" id="oWF-rN-1ej"/>
+                                    </connections>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="y5h-BY-jMi">
+                                    <rect key="frame" x="109" y="65" width="303" height="14"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="7C8-1C-tvn">
+                                        <font key="font" metaFont="miniSystem"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="jssAndCasperImagingVersionCheckTextfield" id="nO1-Wg-Y2h"/>
+                                    </connections>
+                                </textField>
+                                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="8ZA-2c-pj2">
+                                    <rect key="frame" x="401" y="137" width="16" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <connections>
+                                        <binding destination="Voe-Tx-rLC" name="hidden" keyPath="cogJSSURL" id="06h-D4-tBN">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="Voe-Tx-rLC" name="animate" keyPath="cogJSSURLAnimate" id="pVX-uq-jzZ"/>
+                                    </connections>
+                                </progressIndicator>
+                                <button toolTip="Refreshes selections above. Useful for rechecking for missing items." id="fPf-0m-Qf5">
+                                    <rect key="frame" x="400" y="109" width="18" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSRefreshFreestandingTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="RKX-Ab-2f7">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="checkJSSURL:" target="Voe-Tx-rLC" id="qIV-yE-V0R"/>
+                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="optionWindowEnabled" id="k08-yp-amL">
+                                            <dictionary key="options">
+                                                <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                <integer key="NSNullPlaceholder" value="-1"/>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </button>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qrO-dS-2ym">
+                                    <rect key="frame" x="3" y="65" width="103" height="94"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageAlignment="top" imageScaling="proportionallyDown" image="Clonedeploy" id="Ibf-nZ-Kpr"/>
+                                </imageView>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ybx-Ph-Ym3">
+                                    <rect key="frame" x="109" y="61" width="245" height="27"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CloneDeploy Universal Token (Optional)" id="tfl-B1-3aD">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="3TG-5f-y7x">
+                                    <rect key="frame" x="110" y="109" width="285" height="22"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="" drawsBackground="YES" usesSingleLineMode="YES" id="ciO-jn-z84">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <action selector="checkJSSURL:" target="Voe-Tx-rLC" id="P5U-wH-Auw"/>
+                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="jssURL" id="gnW-Yc-ghg">
+                                            <dictionary key="options">
+                                                <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                <string key="NSNullPlaceholder">Required. Enter CloneDeploy Service URL</string>
+                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="Voe-Tx-rLC" name="enabled" keyPath="optionWindowEnabled" id="Izl-dY-Gja">
+                                            <dictionary key="options">
+                                                <integer key="NSMultipleValuesPlaceholder" value="-1"/>
+                                                <integer key="NSNoSelectionPlaceholder" value="-1"/>
+                                                <integer key="NSNotApplicablePlaceholder" value="-1"/>
+                                                <integer key="NSNullPlaceholder" value="-1"/>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="jG3-VC-Z84">
+                                    <rect key="frame" x="112" y="136" width="226" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CloneDeploy Client API Url" id="ibQ-gd-2yw">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField verticalHuggingPriority="750" id="d84-Lz-SkE">
+                                    <rect key="frame" x="111" y="39" width="284" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Pay-eN-53M">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="universalToken" id="AJh-lC-Ve6">
+                                            <dictionary key="options">
+                                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                        </view>
+                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </box>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="139" y="-586"/>
+            <point key="canvasLocation" x="139.5" y="-634"/>
         </window>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
@@ -2939,7 +2973,7 @@ CA
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <clipView key="contentView" id="I46-SW-UEq">
                                                             <rect key="frame" x="1" y="1" width="371" height="119"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="FD4-GK-nhB" id="hJn-iy-2QT">
                                                                     <rect key="frame" x="0.0" y="0.0" width="1003" height="19"/>
@@ -3061,7 +3095,7 @@ CA
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <clipView key="contentView" id="ZE2-lf-Qw2">
                                                             <rect key="frame" x="1" y="1" width="371" height="119"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" headerView="b10-6k-V3j" id="Jph-rm-hCa">
                                                                     <rect key="frame" x="0.0" y="0.0" width="1003" height="19"/>
