@@ -602,7 +602,7 @@ script AutoCasperNBIAppDelegate
                 set logMe to "Trying to get JSS version"
                 logToFile_(me)
                 -- Try & get URL using insecure method, this way it will work with or without a valid SSL cert, timesout after 30 seconds
-                set jssURLHtml to do shell script "/usr/bin/curl -k " & jssURL & "/Test -m 30"
+                set jssURLHtml to do shell script "/usr/bin/curl -k " & jssURL & "/ClientImaging/Test -m 30"
                 --Log Action
                 set logMe to "Checking returned data for JSS version"
                 logToFile_(me)
@@ -3490,7 +3490,7 @@ script AutoCasperNBIAppDelegate
         -- Copy CloneDeploy.app & log
         do shell script "/bin/cp -r " & quoted form of pathToResources & "/CloneDeploy.app " & quoted form of netBootDmgMountPath & "/Applications/" user name adminUserName password adminUsersPassword with administrator privileges
         
-        set logMe to "CloneDeploy Url: " & jssURL
+        set logMe to "CloneDeploy Url: " & jssURL & "/ClientImaging/"
         logToFile_(me)
 
         set endChar to text -1 of jssURL
@@ -3498,7 +3498,7 @@ script AutoCasperNBIAppDelegate
             set jssURL to jssURL & "/"
         end if
         
-        do shell script "/bin/echo " & jssURL & " > " & quoted form of netBootDmgMountPath & "/usr/local/bin/weburl" user name adminUserName password adminUsersPassword with administrator privileges
+        do shell script "/bin/echo " & jssURL &  "/ClientImaging/ > " & quoted form of netBootDmgMountPath & "/usr/local/bin/weburl" user name adminUserName password adminUsersPassword with administrator privileges
         
        
         set logMe to "Setting Universal Token To: " & universalToken

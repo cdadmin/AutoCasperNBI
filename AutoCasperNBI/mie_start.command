@@ -50,7 +50,7 @@ function test_server_conn()
 clear_and_move_down
 web=$(cat /usr/local/bin/weburl)
 export web
-USER_TOKEN=$(cat /usr/local/bin/universaltoken)
+USER_TOKEN=$(cat /usr/local/bin/universaltoken 2>/dev/null)
 
 set_curl_command
 test_server_conn
