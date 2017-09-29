@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
         <development version="6300" identifier="xcode"/>
@@ -397,7 +397,7 @@
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="jG3-VC-Z84">
                                     <rect key="frame" x="112" y="136" width="226" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CloneDeploy API Url" id="ibQ-gd-2yw">
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CloneDeploy Base Url" id="ibQ-gd-2yw">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -429,20 +429,20 @@
                                     </textFieldCell>
                                     <connections>
                                         <action selector="checkJSSURL:" target="Voe-Tx-rLC" id="P5U-wH-Auw"/>
-                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="jssURL" id="gnW-Yc-ghg">
-                                            <dictionary key="options">
-                                                <bool key="NSConditionallySetsEditable" value="NO"/>
-                                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
-                                                <string key="NSNullPlaceholder">Required. Enter CloneDeploy Service URL</string>
-                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                            </dictionary>
-                                        </binding>
                                         <binding destination="Voe-Tx-rLC" name="enabled" keyPath="optionWindowEnabled" id="Izl-dY-Gja">
                                             <dictionary key="options">
                                                 <integer key="NSMultipleValuesPlaceholder" value="-1"/>
                                                 <integer key="NSNoSelectionPlaceholder" value="-1"/>
                                                 <integer key="NSNotApplicablePlaceholder" value="-1"/>
                                                 <integer key="NSNullPlaceholder" value="-1"/>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="jssURL" id="aM4-17-DFN">
+                                            <dictionary key="options">
+                                                <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                <string key="NSNullPlaceholder">Required. Enter CloneDeploy Base Url</string>
+                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                                             </dictionary>
                                         </binding>
                                     </connections>
