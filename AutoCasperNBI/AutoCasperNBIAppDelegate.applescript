@@ -12,7 +12,7 @@ script AutoCasperNBIAppDelegate
 
 --- Classes
 	property parent : class "NSObject"
-    
+    property NSApp  : current application's class "NSApp"
 --- Objects
     property defaults : ""
     property hostMacOSVersion : ""
@@ -22,6 +22,7 @@ script AutoCasperNBIAppDelegate
     property showBuildProcessWindow : ""
     property selectedOSdmgPath : ""
     property selectedOSdmgMountPath : ""
+    property selectedOSdmgKind : ""
     property selectedOSdmgVersion : ""
     property selectedOSBuilddmgVersion : ""
     property selectedAppPath : ""
@@ -86,6 +87,7 @@ script AutoCasperNBIAppDelegate
     property buildProcessLogTextField : ""
     property versionOfAutoCasperNBI : ""
     property netBootDirectory : ""
+    property rootDirectory : ""
     property adminUserName : ""
     property adminUsersPassword : ""
     property adminUserWindow : ""
@@ -208,37 +210,48 @@ script AutoCasperNBIAppDelegate
       
 --- HANDLERS ---
 
-    -- To be run at launch
-    on startYourEngines_(sender)
-        -- Get AutoCasperNBI version
-        --set versionOfAutoCasperNBI to get version of application "AutoCasperNBI"
-        -- Log AutoCasperNBI version
-        set logMe to  "AutoCasperNBI " & versionOfAutoCasperNBI
-        logToFile_(me)
-        -- Get OS of host mac to verify that we can create an .nbi from supplied OS.dmg
-        set my hostMacOSVersion to (do shell script "/usr/bin/sw_vers -productVersion")
-        -- Get host macs Build version for logging/debugging
-        set my hostMacOSBuildVersion to (do shell script "/usr/bin/sw_vers -buildVersion")
-        -- Log OS version & build of host mac
-        set logMe to  "Running on OS " & hostMacOSVersion & " (" & hostMacOSBuildVersion & ")"
-        logToFile_(me)
-        -- If we're running on 10.10, enable Yosemite icons
-        if my hostMacOSVersion begins with "10.10" or my hostMacOSVersion begins with "10.11" then
-            set my yosemiteOS to true
+on startYourEngines_(sender)
+    -- Get AutoCasperNBI version
+    set versionOfAutoCasperNBI to get version of application "AutoCasperNBI"
+    -- Log AutoCasperNBI version
+    set logMe to  "AutoCasperNBI " & versionOfAutoCasperNBI
+    logToFile_(me)
+    -- Get OS of host mac to verify that we can create an .nbi from supplied OS.dmg
+    set my hostMacOSVersion to (do shell script "/usr/bin/sw_vers -productVersion")
+    -- Variables to mess with, keeping the orignal with their decimals
+    set my hostMacOSVersionToDelim to hostMacOSVersion
+    -- Store delimiters for resetting later
+    set applescriptsDelims to AppleScript's text item delimiters
+    -- Set delimiters to decimal
+    set AppleScript's text item delimiters to "."
+    -- Set variables to the split versions
+    set hostMacOSVersionToDelim to hostMacOSVersionToDelim's text items
+    -- Set to major version of OS
+    set hostMacOSVersionMajor to text item 2 of hostMacOSVersionToDelim as integer
+    -- Reset delimiters
+    set AppleScript's text item delimiters to applescriptsDelims
+    -- Get host macs Build version for logging/debugging
+    set my hostMacOSBuildVersion to (do shell script "/usr/bin/sw_vers -buildVersion")
+    -- Log OS version & build of host mac
+    set logMe to  "Running on OS " & hostMacOSVersion & " (" & hostMacOSBuildVersion & ")"
+    logToFile_(me)
+    -- If we're running on 10.10, enable Yosemite icons
+    if my hostMacOSVersion begins with "10.10" or my hostMacOSVersion begins with "10.11" then
+        set my yosemiteOS to true
         else
-            set my yosemiteOS to false
-        end if
-        -- Get username of user running AutoCasperNBI
-        set userName to short user name of (system info)
-        set logMe to "Launched by " & userName
-        logToFile_(me)
-        -- Get a UUID for folder path
-        set tempUUID to do shell script "/usr/bin/uuidgen"
-        set logMe to "UUID " & tempUUID
-        logToFile_(me)
-        -- Get path to resources folder
-        set pathToResources to (current application's class "NSBundle"'s mainBundle()'s resourcePath()) as string
-    end startYourEngines_
+        set my yosemiteOS to false
+    end if
+    -- Get username of user running AutoCasperNBI
+    set userName to short user name of (system info)
+    set logMe to "Launched by " & userName
+    logToFile_(me)
+    -- Get a UUID for folder path
+    set tempUUID to do shell script "/usr/bin/uuidgen"
+    set logMe to "UUID " & tempUUID
+    logToFile_(me)
+    -- Get path to resources folder
+    set pathToResources to (current application's class "NSBundle"'s mainBundle()'s resourcePath()) as string
+end startYourEngines_
 
     -- Register plist default settings
     on regDefaults_(sender)
@@ -466,98 +479,116 @@ script AutoCasperNBIAppDelegate
         end try
     end selectedOSDMG_
 
-    -- Try & get OS version from dropped dmg, error if something is not quite right
-    on doOSDMG_(sender)
-        -- Log that we're tryin to mount selected DMG
-        set logMe to "Trying to mount: " & selectedOSdmgPath
-        logToFile_(me)
-        -- Update label to show we're doing stuff
-        set my selectedOSDMGTextField to "Examining..."
-        -- Display the cog to reinforce we're busy
-        set my cogOSDMG to true
-        -- Delay needed to update label
-        delay 0.1
-        -- Set to front window
-        tell application "System Events" to set frontmost of process "AutoCloneDeployNBI" to true
-        --  Try & mount OS.dmg
-        -- Stolen from frogor on IRC with permission :)
-        -- Mount OS.dmh & get mount point
-        set mountOutputPlist to do shell script "/usr/bin/hdiutil attach " & quoted form of selectedOSdmgPath & " -nobrowse -owners on -plist"
-        -- convert the string into a NSString
-        set theString to NSString's stringWithString_(mountOutputPlist)
-        -- convert the NSString into NSData
-        set theData to theString's dataUsingEncoding_(NSUTF8StringEncoding)
-        -- Parse the NSData as a plist
-        set thePlist to NSPropertyListSerialization's propertyListFromData_mutabilityOption_format_errorDescription_(theData, NSPropertyListImmutable, None, None)
-        -- The returned plist is actually either a NSDictionary or NSArray, depending on the plist root object
-        -- In this case, the output of hdiutil is a dict with a single key we care about (which contains an array)
-        set theEntities to thePlist's objectForKey_("system-entities")
-        --log theEntities
-        -- There can be (and usually are) multiple entities. We're looking for the one that contains a "mount-point" key
-        -- Start with a default value of None
-        set selectedOSdmgMountPath to None
-        -- Loop through each entry, looking for the key's value
-        repeat with anItem in theEntities
-            set selectedOSdmgMountPath to anItem's objectForKey_("mount-point")
-            -- If we found a value, exit with it
-            if (selectedOSdmgMountPath is not equal to None) then exit repeat
-            -- Guess we didn't find one, let's check the next ...
-        end repeat
-        --  Set to text of variable
-        set selectedOSdmgMountPath to selectedOSdmgMountPath as text
-        -- If we have an value for the OS DMG's mount-point, try & get OS version
-        if selectedOSdmgMountPath is not equal to None then
-            set logMe to "Mounted to: " & selectedOSdmgMountPath
-            logToFile_(me)
-            -- Try & read /System/Library/CoreServices/SystemVersion.plist
-            try
-                -- Try & get OS version
-                set selectedOSdmgVersion to do shell script "/usr/bin/defaults read " & quoted form of selectedOSdmgMountPath & "/System/Library/CoreServices/SystemVersion.plist ProductVersion"
-                -- Try & get build version
-                set my selectedOSBuilddmgVersion to do shell script "/usr/bin/defaults read " & quoted form of selectedOSdmgMountPath & "/System/Library/CoreServices/SystemVersion.plist ProductBuildVersion"
-                -- If we have both OS & build versions, display them
-                set my selectedOSDMGTextField to "Mac OS " & selectedOSdmgVersion & " (" & selectedOSBuilddmgVersion & ")"
-                -- Variables to mess with, keeping the orignal with their decimals
-                set my selectedOSdmgVersionToDelim to selectedOSdmgVersion
-                -- Store delimiters for resetting later
-                set applescriptsDelims to AppleScript's text item delimiters
-                -- Set delimiters to decimal
-                set AppleScript's text item delimiters to "."
-                -- Set variables to the split versions of Casper Imaging & JSS versions
-                set selectedOSdmgVersionToDelim to selectedOSdmgVersionToDelim's text items
-                -- Set to major version of Casper Imaging
-                set selectedOSdmgVersionMajor to text item 2 of selectedOSdmgVersionToDelim as integer
-                -- Reset delimiters
-                set AppleScript's text item delimiters to applescriptsDelims
-                -- Reset OSDMG Icons
-                doResetOSDMGIcons_(me)
-                -- If we're building a 10.10+ NBI, enable Yosemite icons
-                if selectedOSdmgVersionMajor greater than 9 then
-                    set my yosemiteOS to true
-                else
-                    set my yosemiteOS to false
-                end if
-                -- Display green check icon
-                set my selectedOSDMGCheckPass to true
-                -- Set netBoot Name
-                set my netBootNameTextField to selectedOSdmgVersion & " AutoCasperNBI"
-                -- See if pre-reqs have been met
-                checkIfReadyToProceed_(me)
-            on error
-                --Log Action
-                set logMe to "Cannot read OS Version"
-                logToFile_(me)
-                -- Error advising we cannot get the OS version from dmg
-                set my selectedOSDMGTextField to "Cannot read OS Version"
-            end try
-        else
-            --Log Action
-            set logMe to "Cannot Mount DMG"
-            logToFile_(me)
-            -- Error advising we cannot mount the DMG
-            set my selectedOSDMGTextField to "Cannot Mount DMG"
+-- Try & get OS version from dropped dmg, error if something is not quite right
+on doOSDMG_(sender)
+    -- Log that we're tryin to mount selected DMG
+    set logMe to "Trying to mount: " & selectedOSdmgPath
+    logToFile_(me)
+    -- Update label to show we're doing stuff
+    set my selectedOSDMGTextField to "Examining..."
+    -- Display the cog to reinforce we're busy
+    set my cogOSDMG to true
+    -- Delay needed to update label
+    delay 0.1
+    -- Set to front window
+    tell application "System Events" to set frontmost of process "AutoCloneDeployNBI" to true
+    --  Try & mount OS.dmg
+    -- Stolen from frogor on IRC with permission :)
+    -- Mount OS.dmh & get mount point
+    set mountOutputPlist to do shell script "/usr/bin/hdiutil attach " & quoted form of selectedOSdmgPath & " -nobrowse -owners on -plist"
+    -- convert the string into a NSString
+    set theString to NSString's stringWithString_(mountOutputPlist)
+    -- convert the NSString into NSData
+    set theData to theString's dataUsingEncoding_(NSUTF8StringEncoding)
+    -- Parse the NSData as a plist
+    set thePlist to NSPropertyListSerialization's propertyListFromData_mutabilityOption_format_errorDescription_(theData, NSPropertyListImmutable, None, None)
+    -- The returned plist is actually either a NSDictionary or NSArray, depending on the plist root object
+    -- In this case, the output of hdiutil is a dict with a single key we care about (which contains an array)
+    set theEntities to thePlist's objectForKey_("system-entities")
+    --log theEntities
+    -- There can be (and usually are) multiple entities. We're looking for the one that contains a "mount-point" key
+    -- Start with a default value of None
+    set selectedOSdmgMountPath to None
+    set selectedOSdmgKind to None
+    -- Loop through each entry, looking for the key's value
+    repeat with anItem in theEntities
+        set selectedOSdmgMountPath to anItem's objectForKey_("mount-point")
+        set selectedOSdmgKind to (anItem's objectForKey:"volume-kind")
+        -- If we have a value, then check.. if APFS a few new mount-points appear that we need to discard
+        if (selectedOSdmgMountPath is not equal to missing value) then
+            set selectedOSdmgMountPath to (NSString's stringWithString:selectedOSdmgMountPath) as string
+            if (selectedOSdmgMountPath as string is not equal to "/Volumes/Preboot") and (selectedOSdmgMountPath as string is not equal to "/Volumes/Recovery") then
+                set selectedOSdmgMountPath to selectedOSdmgMountPath as text
+                exit repeat
+            end if
         end if
-    end doOSDMG_
+        -- Guess we didn't find one, let's check the next ...
+    end repeat
+    --  Set to text of variable
+    set selectedOSdmgMountPath to selectedOSdmgMountPath as text
+    -- If APFS source but not 10.13
+    if (hostMacOSVersionMajor is less than 13) and ((NSString's stringWithString:selectedOSdmgKind) as string) is equal to "apfs" then
+        --Log Action
+        set logMe to "APFS source, not a 10.13 host"
+        logToFile_(me)
+        -- Error advising we cannot mount the DMG
+        set my selectedOSDMGTextField to "Cannot Mount DMG"
+        display dialog selectedOSdmgPath & " is an APFS Volume, & therefore needs 10.13 to create an NBI from." with icon 0 buttons {"OK"}
+        -- Reset OSDMG Icons & hide cog
+        doResetOSDMGIcons_(me)
+        -- If we have an value for the OS DMG's mount-point, try & get OS version
+        else if selectedOSdmgMountPath is not equal to None then
+        set logMe to "Mounted to: " & selectedOSdmgMountPath
+        logToFile_(me)
+        -- Try & read /System/Library/CoreServices/SystemVersion.plist
+        try
+            -- Try & get OS version
+            set selectedOSdmgVersion to do shell script "/usr/bin/defaults read " & quoted form of selectedOSdmgMountPath & "/System/Library/CoreServices/SystemVersion.plist ProductVersion"
+            -- Try & get build version
+            set my selectedOSBuilddmgVersion to do shell script "/usr/bin/defaults read " & quoted form of selectedOSdmgMountPath & "/System/Library/CoreServices/SystemVersion.plist ProductBuildVersion"
+            -- If we have both OS & build versions, display them
+            set my selectedOSDMGTextField to "Mac OS " & selectedOSdmgVersion & " (" & selectedOSBuilddmgVersion & ")"
+            -- Variables to mess with, keeping the orignal with their decimals
+            set my selectedOSdmgVersionToDelim to selectedOSdmgVersion
+            -- Store delimiters for resetting later
+            set applescriptsDelims to AppleScript's text item delimiters
+            -- Set delimiters to decimal
+            set AppleScript's text item delimiters to "."
+            -- Set variables to the split versions of Casper Imaging & JSS versions
+            set selectedOSdmgVersionToDelim to selectedOSdmgVersionToDelim's text items
+            -- Set to major version of Casper Imaging
+            set selectedOSdmgVersionMajor to text item 2 of selectedOSdmgVersionToDelim as integer
+            -- Reset delimiters
+            set AppleScript's text item delimiters to applescriptsDelims
+            -- Reset OSDMG Icons
+            doResetOSDMGIcons_(me)
+            -- If we're building a 10.10+ NBI, enable Yosemite icons
+            if selectedOSdmgVersionMajor greater than 9 then
+                set my yosemiteOS to true
+                else
+                set my yosemiteOS to false
+            end if
+            -- Display green check icon
+            set my selectedOSDMGCheckPass to true
+            -- Set netBoot Name
+            set my netBootNameTextField to selectedOSdmgVersion & " AutoCasperNBI"
+            -- See if pre-reqs have been met
+            checkIfReadyToProceed_(me)
+            on error
+            --Log Action
+            set logMe to "Cannot read OS Version"
+            logToFile_(me)
+            -- Error advising we cannot get the OS version from dmg
+            set my selectedOSDMGTextField to "Cannot read OS Version"
+        end try
+        else
+        --Log Action
+        set logMe to "Cannot Mount DMG"
+        logToFile_(me)
+        -- Error advising we cannot mount the DMG
+        set my selectedOSDMGTextField to "Cannot Mount DMG"
+    end if
+end doOSDMG_
 
 
     -- Make sure OS & Imaging.app is specified before proceeding, once checked enable JSS options, as well as Build & Option buttons
@@ -1663,6 +1694,10 @@ script AutoCasperNBIAppDelegate
         if selectedOSdmgVersionMajor is 9 then
             set my buildProcessProgressBarMax to buildProcessProgressBarMax + 1
         end if
+        -- If we're creating on a 10.13.x netboot
+        if selectedOSdmgVersionMajor is 13 then
+            set my buildProcessProgressBarMax to buildProcessProgressBarMax + 2
+        end if
         -- If we're creating a Restorable DMG
         if createReadOnlyDMG is true
             set my buildProcessProgressBarMax to buildProcessProgressBarMax + 2
@@ -2143,7 +2178,7 @@ script AutoCasperNBIAppDelegate
                 set my buildProcessProgressBar to buildProcessProgressBar + 1
                 delay 0.1
                 -- Delete all in the location except those that are given below
-                do shell script "find " & quoted form of netBootDmgMountPath & "/Applications/Utilities/* -maxdepth 0 -not -path \"*Activity Monitor.app*\" -not -path \"*Console.app*\" -not -path \"*Disk Utility.app*\" -not -path \"*Grab.app*\" -not -path \"*Keychain Access.app*\" -not -path \"*System Information.app*\" -not -path \"*Terminal.app*\" -exec rm -rf {} \\;" user name adminUserName password adminUsersPassword with administrator privileges
+                do shell script "find " & quoted form of netBootDmgMountPath & "/System/Library/PreferencePanes/* -maxdepth 0 -not -path \"*DateAndTime.prefPane*\" -not -path \"*Displays.prefPane*\" -not -path \"*Keyboard.prefPane*\" -not -path \"*Network.prefPane*\" -not -path \"*SharingPref.prefPane*\" -not -path \"*StartupDisk.prefPane*\" -exec rm -rf {} \\;" user name adminUserName password adminUsersPassword with administrator privileges
                 --Log Action
                 set logMe to "Deleted Utilities from: " & netBootDmgMountPath & "/Applications/Utilities/"
                 logToFile_(me)
@@ -2864,8 +2899,8 @@ script AutoCasperNBIAppDelegate
                 set logMe to "Deleted " & netBootDmgMountPath & "/Library/Preferences/com.apple.dockfixup.plist"
                 logToFile_(me)
             end if
-            -- Disable AppNap
-            disableAppNap_(me)
+            -- Deletes launchAgent that triggers "New to Mac?" notification
+            deleteTouristd_(sender)
         on error
             --Log Action
             set logMe to "Error: Deleting /Library/Preferences/com.apple.dockfixup.plist"
@@ -2878,6 +2913,48 @@ script AutoCasperNBIAppDelegate
             userNotify_(me)
         end try
     end deleteDockFixUp_
+
+
+-- Deletes launchAgent that triggers "New to Mac?" notification
+    on deleteTouristd_(sender)
+        -- Update Build Process Window's Text Field
+        set my buildProcessTextField to "Disabling touristd"
+        delay 0.1
+        -- Update build Process ProgressBar
+        set my buildProcessProgressBar to buildProcessProgressBar + 1
+        try
+            set variableVariable to netBootDmgMountPath & "/System/Library/LaunchAgents/com.apple.touristd.plist"
+            set file_path to current application's NSString's stringWithString:variableVariable
+            set fileManager to current application's NSFileManager's defaultManager()
+            if (item 1 of (fileManager's fileExistsAtPath:file_path isDirectory:(reference))) as boolean = true then
+                --Log Action
+                set logMe to "Found com.apple.touristd.plist: " & file_path
+                logToFile_(me)
+                -- Delete the below folder, silently error if doesn't exist
+                try
+                    do shell script "/bin/rm " & quoted form of variableVariable user name adminUserName password adminUsersPassword with administrator privileges
+                end try
+                --Log Action
+                set logMe to "Deleted " & file_path
+                logToFile_(me)
+                -- Disable AppNap
+                disableAppNap_(me)
+                else
+                -- Disable AppNap
+                disableAppNap_(me)
+            end if
+            on error
+            --Log Action
+            set logMe to "Error: Disabling touristd"
+            logToFile_(me)
+            -- Set to false to display
+            set my userNotifyErrorHidden to false
+            -- Set Error message
+            set my userNotifyError to "Error: Disabling touristd"
+            -- Notify of errors or success
+            userNotify_(me)
+        end try
+    end deleteTouristd_
 
     -- Disable AppNap
     on disableAppNap_(sender)
@@ -3201,8 +3278,8 @@ script AutoCasperNBIAppDelegate
                      set logMe to "Successfully copied Lion Root user plist"
                      logToFile_(me)
                 else
-                    --Log Action
-                    set logMe to "Trying to copy Root user plist"
+                --Log Action
+                    set logMe to "Trying to copy Root user plist (10.8+)"
                     logToFile_(me)
                     -- Update Build Process Window's Text Field
                     set my buildProcessTextField to "Copying Root User plist"
@@ -3214,7 +3291,9 @@ script AutoCasperNBIAppDelegate
                     --Log Action
                     set logMe to "Successfully copied Root user plist"
                     logToFile_(me)
-                end if
+                    
+                    
+            end if
             end considering
             --Set variableVariable
             set variableVariable to netBootDmgMountPath & "/private/var/db/dslocal/nodes/Default/users/root.plist"
@@ -3276,10 +3355,15 @@ script AutoCasperNBIAppDelegate
             --Log Action
             set logMe to "Trying to set Root User auto login"
             logToFile_(me)
-            -- Write JSS URL to plist,
+            -- Write autoLoginUID to plist,
+            do shell script "/usr/bin/defaults write " & quoted form of netBootDmgMountPath & "/Library/Preferences/com.apple.loginwindow.plist autoLoginUID -string 0" user name adminUserName password adminUsersPassword with administrator privileges
+            --Log Action
+            set logMe to "Successfully set autoLoginUID"
+            logToFile_(me)
+            -- Write autoLoginUser to plist,
             do shell script "/usr/bin/defaults write " & quoted form of netBootDmgMountPath & "/Library/Preferences/com.apple.loginwindow.plist autoLoginUser -string root" user name adminUserName password adminUsersPassword with administrator privileges
             --Log Action
-            set logMe to "Successfully set Root User auto login"
+            set logMe to "Successfully set autoLoginUser"
             logToFile_(me)
             --Log Action
             set logMe to "Trying to set ownership to root:wheel on " & quoted form of netBootDmgMountPath & "/Library/Preferences/com.apple.loginwindow.plist"
@@ -3307,9 +3391,8 @@ script AutoCasperNBIAppDelegate
             delay 0.1
             -- Update build Process ProgressBar
             set my buildProcessProgressBar to buildProcessProgressBar + 1
-            -- Copy the root.plist
-            do shell script "/usr/bin/ditto " & quoted form of pathToResources & "/com.apple.dock.plist " & quoted form of netBootDmgMountPath & "/private/var/root/Library/Preferences" user name adminUserName password adminUsersPassword with administrator privileges
-            --Log Action
+            -- Copy the correct dock.plist
+            do shell script "/usr/bin/ditto " & quoted form of pathToResources & "/" & "com.apple.dock.plist " & quoted form of netBootDmgMountPath & "/private/var/root/Library/Preferences/com.apple.dock.plist" user name adminUserName password adminUsersPassword with administrator privileges            --Log Action
             set logMe to "Successfully copied Root user dock.plist"
             logToFile_(me)
             -- Install rc.netboot.pkg
@@ -4041,7 +4124,7 @@ end copyCloneDeployImaging_
             logToFile_(me)
             -- Update dylyd cache, this can error on success.
             try
-                do shell script "/usr/bin/update_dyld_shared_cache -root " & quoted form of netBootDmgMountPath & " -universal_boot -force" user name adminUserName password adminUsersPassword with administrator privileges
+                do shell script quoted form of netBootDmgMountPath & "/usr/bin/update_dyld_shared_cache -root " & quoted form of netBootDmgMountPath & " -universal_boot -force" user name adminUserName password adminUsersPassword with administrator privileges
             end try
             --Log Action
             set logMe to "Successfully created dyld caches"
@@ -4110,8 +4193,8 @@ end copyCloneDeployImaging_
                 --Log Action
                 set logMe to "Deleted " & netBootDmgMountPath & "/System/Library/Extensions/JMicronATA.kext"
                 logToFile_(me)
-                -- Generate the Kernel cache
-                generateKernelCache_(me)
+                -- Delete launchd rebuild caches
+                deleteLaunchdRebuildCaches_(me)
             on error
                 --Log Action
                 set logMe to "Error: Deleting extensions"
@@ -4124,10 +4207,90 @@ end copyCloneDeployImaging_
                 userNotify_(me)
             end try
         else
-            -- Generate the Kernel cache
-            generateKernelCache_(me)
+        -- Delete launchd rebuild caches
+        deleteLaunchdRebuildCaches_(me)
         end if
     end reduceKernelCache_
+
+    -- Delete launchd rebuild caches
+    on deleteLaunchdRebuildCaches_(sender)
+        try
+            set variableVariable to netBootDmgMountPath & "/var/db/.launchd_rebuild_caches"
+            set file_path to current application's NSString's stringWithString:variableVariable
+            set fileManager to current application's NSFileManager's defaultManager()
+            if (item 1 of (fileManager's fileExistsAtPath:file_path isDirectory:(reference))) as boolean = true then
+                -- Update Build Process Window's Text Field
+                set my buildProcessTextField to "Deleting /var/db/.launchd_rebuild_caches"
+                delay 0.1
+                -- Update build Process ProgressBar
+                set my buildProcessProgressBar to buildProcessProgressBar + 1
+                --Log Action
+                set logMe to "Found: " & file_path
+                logToFile_(me)
+                -- Delete the below file, silently error if doesn't exist
+                try
+                    do shell script "/bin/rm " & quoted form of variableVariable user name adminUserName password adminUsersPassword with administrator privileges
+                end try
+                --Log Action
+                set logMe to "Deleted: " & file_path
+                logToFile_(me)
+                -- Create xpc extensions cache files
+                createXpcExtensionsCaches_(me)
+                else
+                -- Create xpc extensions cache files
+                createXpcExtensionsCaches_(me)
+            end if
+            on error
+            --Log Action
+            set logMe to "Error: Creating xpc extensions cache"
+            logToFile_(me)
+            -- Set to false to display
+            set my userNotifyErrorHidden to false
+            -- Set Error message
+            set my userNotifyError to "Error: xpc extensions cache"
+            -- Notify of errors or success
+            userNotify_(me)
+        end try
+    end deleteLaunchdRebuildCaches
+
+    -- Create xpc extensions cache files
+    on createXpcExtensionsCaches_(sender)
+        try
+            set variableVariable to netBootDmgMountPath & "/usr/libexec/xpccachectl"
+            set file_path to current application's NSString's stringWithString:variableVariable
+            set fileManager to current application's NSFileManager's defaultManager()
+            if (item 1 of (fileManager's fileExistsAtPath:file_path isDirectory:(reference))) as boolean = true then
+                -- Update Build Process Window's Text Field
+                set my buildProcessTextField to "Creating xpc extensions cache"
+                delay 0.1
+                -- Update build Process ProgressBar
+                set my buildProcessProgressBar to buildProcessProgressBar + 1
+                --Log Action
+                set logMe to "Creating xpc extensions cache on : " & netBootDmgMountPath
+                logToFile_(me)
+                -- Update xpc extension caches
+                do shell script quoted form of netBootDmgMountPath & "/usr/libexec/xpccachectl --base " & quoted form of netBootDmgMountPath user name adminUserName password adminUsersPassword with administrator privileges
+                   --Log Action
+                    set logMe to "Successfully xpc extensions cache"
+                    logToFile_(me)
+                    -- Generate the Kernel cache
+                    generateKernelCache_(me)
+                    else
+                    -- Generate the Kernel cache
+                    generateKernelCache_(me)
+                end if
+                on error
+                --Log Action
+                set logMe to "Error: Creating xpc extensions cache"
+                logToFile_(me)
+                -- Set to false to display
+                set my userNotifyErrorHidden to false
+                -- Set Error message
+                set my userNotifyError to "Error: xpc extensions cache"
+                -- Notify of errors or success
+                userNotify_(me)
+            end try
+        end createXpcExtensionsCaches
 
     -- Generate the Kernel cache
     on generateKernelCache_(sender)
@@ -4272,8 +4435,8 @@ end copyCloneDeployImaging_
             --Log Action
             set logMe to "Set ownership to root:staff on " & netBootDirectory & "/i386/booter"
             logToFile_(me)
-            -- Copy PlatformSupport.plist
-            copyPlatformSupportPlist_(me)
+            -- Copy Wifi Folder if exists
+            copyWifiFolder_(me)
         on error
             --Log Action
             set logMe to "Error: Copying booter.efi"
@@ -4286,6 +4449,66 @@ end copyCloneDeployImaging_
             userNotify_(me)
         end try
     end copyBootEfi_
+
+    -- Copy Wifi Folder if exists
+    on copyWifiFolder_(sender)
+        try
+            set variableVariable to netBootDmgMountPath & "/usr/share/firmware/wifi/"
+            set file_path to current application's NSString's stringWithString:variableVariable
+            set fileManager to current application's NSFileManager's defaultManager()
+            if (item 1 of (fileManager's fileExistsAtPath:file_path isDirectory:(reference))) as boolean = true then
+                --Log Action
+                set logMe to "Found wifi folder: " & file_path
+                logToFile_(me)
+                -- Update build Process ProgressBar
+                set my buildProcessProgressBar to buildProcessProgressBar + 1
+                --Log Action
+                set logMe to "Trying to create folder " & netBootDirectory & "/i386/wifi"
+                logToFile_(me)
+                -- Create the wifi folder
+                do shell script "/bin/mkdir -p " & quoted form of netBootDirectory & "/i386/wifi" user name adminUserName password adminUsersPassword with administrator privileges
+                --Log Action
+                set logMe to "Created folder " & netBootDirectory & "/i386/wifi"
+                logToFile_(me)
+                -- Update Build Process Window's Text Field
+                set my buildProcessTextField to "Copying wifi folder"
+                delay 0.1
+                -- Update build Process ProgressBar
+                set my buildProcessProgressBar to buildProcessProgressBar + 1
+                --Log Action
+                set logMe to "Trying to copy wifi folder from" & quoted form of variableVariable
+                logToFile_(me)
+                set logMe to "command: /bin/cp -R " & quoted form of variableVariable & space & quoted form of netBootDirectory & "/i386/wifi/"
+                logToFile_(me)
+                -- Create the wifi folder
+                do shell script "/bin/cp -R " & quoted form of variableVariable & space & quoted form of netBootDirectory & "/i386/wifi/" user name adminUserName password adminUsersPassword with administrator privileges
+                --Log Action
+                set logMe to "Successfully copied wifi folder"
+                logToFile_(me)
+                -- Correct ownership
+                do shell script "/usr/sbin/chown -R root:staff " & quoted form of netBootDirectory & "/i386/wifi" user name adminUserName password adminUsersPassword with administrator privileges
+                --Log Action
+                set logMe to "Set ownership to root:staff on " & netBootDirectory & "/i386/wifi"
+                logToFile_(me)
+                -- Copy PlatformSupport.plist
+                copyPlatformSupportPlist_(me)
+                else
+                -- Copy PlatformSupport.plist
+                copyPlatformSupportPlist_(me)
+            end if
+            on error
+            --Log Action
+            set logMe to "Error: Copying wifi folder"
+            logToFile_(me)
+            -- Set to false to display
+            set my userNotifyErrorHidden to false
+            -- Set Error message
+            set my userNotifyError to "Error: Copying wifi folder"
+            -- Notify of errors or success
+            userNotify_(me)
+        end try
+    end copyWifiFolder_
+
 
     -- Copy PlatformSupport.plist
     on copyPlatformSupportPlist_(sender)
